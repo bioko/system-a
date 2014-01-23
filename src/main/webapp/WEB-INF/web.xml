@@ -1,0 +1,43 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<display-name>Bioko System</display-name>
+
+	<filter>
+		<filter-name>guiceFilter</filter-name>
+		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>guiceFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>it.bioko.systema.injection.SystemAServletConfig</listener-class>
+	</listener>
+
+	<!-- <servlet>
+		<servlet-name>System A</servlet-name>
+		<servlet-class>it.bioko.http-exposer.BiokoServlet</servlet-class>
+		<init-param>
+			<param-name>systemName</param-name>
+			<param-value>systemA</param-value>
+		</init-param>
+		<init-param>
+			<param-name>systemVersion</param-name>
+			<param-value>1.0</param-value>
+		</init-param>
+		<init-param>
+			<param-name>systemConfig</param-name>
+			<param-value>DEV</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SystemAServlet</servlet-name>
+		<url-pattern>/api/systemA/1.0/*</url-pattern>
+	</servlet-mapping>
+	-->
+</web-app>
