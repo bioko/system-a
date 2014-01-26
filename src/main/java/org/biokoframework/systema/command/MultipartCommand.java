@@ -32,7 +32,6 @@ import org.biokoframework.system.command.Command;
 import org.biokoframework.system.command.CommandException;
 import org.biokoframework.system.context.Context;
 import org.biokoframework.system.entity.binary.BinaryEntity;
-import org.biokoframework.system.repository.core.Repository;
 import org.biokoframework.system.repository.core.SafeRepositoryHelper;
 import org.biokoframework.systema.commons.SystemARepositories;
 import org.biokoframework.systema.entity.dummyMultipart.DummyMultipart;
@@ -40,6 +39,7 @@ import org.biokoframework.systema.entity.dummyMultipart.DummyMultipart;
 import java.util.Arrays;
 
 import org.biokoframework.utils.fields.Fields;
+import org.biokoframework.utils.repository.Repository;
 
 
 

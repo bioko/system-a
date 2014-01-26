@@ -28,10 +28,10 @@
 package org.biokoframework.systema.command;
 
 import org.biokoframework.system.command.entityDependencies.DissolvedCommand;
-import org.biokoframework.system.repository.core.Repository;
 import org.biokoframework.systema.commons.SystemARepositories;
 import org.biokoframework.systema.entity.dummy1.DummyEntity1;
 import org.biokoframework.systema.entity.dummy2.DummyEntity2;
+import org.biokoframework.utils.repository.Repository;
 
 public class ExampleDissolvedCommandWithAnnotation extends DissolvedCommand {
 	

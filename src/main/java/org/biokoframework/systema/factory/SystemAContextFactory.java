@@ -27,9 +27,10 @@
 
 package org.biokoframework.systema.factory;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.biokoframework.system.ConfigurationEnum;
 import org.biokoframework.system.KILL_ME.exception.SystemException;
-import org.biokoframework.system.command.ValidationException;
 import org.biokoframework.system.context.Context;
 import org.biokoframework.system.entity.authentication.Authentication;
 import org.biokoframework.system.entity.authentication.EmailConfirmation;
@@ -40,7 +41,6 @@ import org.biokoframework.system.entity.template.Template;
 import org.biokoframework.system.entity.template.TemplateBuilder;
 import org.biokoframework.system.factory.binary.BinaryEntityRepository;
 import org.biokoframework.system.factory.binary.BinaryEntityRepositoryFactory;
-import org.biokoframework.system.repository.core.RepositoryException;
 import org.biokoframework.system.repository.memory.InMemoryRepository;
 import org.biokoframework.system.repository.sql.MySQLConnector;
 import org.biokoframework.system.repository.sql.SqlConstants;
@@ -58,8 +58,9 @@ import org.biokoframework.systema.entity.dummyComplex.DummyComplexDomainEntity;
 import org.biokoframework.systema.entity.dummyMultipart.DummyMultipart;
 import org.biokoframework.systema.entity.dummyWithInteger.DummyEntityWithInteger;
 import org.biokoframework.systema.misc.TestShutdownListener;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.biokoframework.utils.exception.BiokoException;
+import org.biokoframework.utils.exception.ValidationException;
+import org.biokoframework.utils.repository.RepositoryException;
 
 public class SystemAContextFactory extends AbstractContextFactory {
 
@@ -98,7 +99,7 @@ public class SystemAContextFactory extends AbstractContextFactory {
 	}
 	
 	@Override
-	protected Context configureForDemo(Context context) throws SystemException {
+	protected Context configureForDemo(Context context) throws BiokoException {
 		Logger.getLogger("systemA").setLevel(Level.DEBUG);
 		
 		addSqlRepositories(context);

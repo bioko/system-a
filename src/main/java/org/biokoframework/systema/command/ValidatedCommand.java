@@ -30,7 +30,6 @@ package org.biokoframework.systema.command;
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
 import org.biokoframework.system.command.Command;
 import org.biokoframework.system.command.CommandException;
-import org.biokoframework.system.repository.core.Repository;
 import org.biokoframework.system.repository.core.SafeRepositoryHelper;
 import org.biokoframework.systema.commons.SystemARepositories;
 import org.biokoframework.systema.entity.dummy1.DummyEntity1;
@@ -41,6 +40,7 @@ import java.util.ArrayList;
 
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.fields.Fields;
+import org.biokoframework.utils.repository.Repository;
 
 public class ValidatedCommand extends Command{
 
