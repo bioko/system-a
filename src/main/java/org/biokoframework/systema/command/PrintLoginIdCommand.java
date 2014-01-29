@@ -27,11 +27,10 @@
 
 package org.biokoframework.systema.command;
 
-import org.biokoframework.utils.fields.Fields;
-
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
 import org.biokoframework.system.command.Command;
 import org.biokoframework.system.command.CommandException;
+import org.biokoframework.utils.fields.Fields;
 
 public class PrintLoginIdCommand extends Command {
 

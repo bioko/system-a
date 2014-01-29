@@ -27,6 +27,10 @@
 
 package org.biokoframework.systema.command;
 
+import java.util.ArrayList;
+
+import javax.mail.internet.MimeMessage;
+
 import org.biokoframework.system.KILL_ME.commons.GenericConstants;
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
 import org.biokoframework.system.command.Command;
@@ -39,11 +43,6 @@ import org.biokoframework.system.service.mail.EmailFiller;
 import org.biokoframework.system.service.mail.EmailServiceImplementation;
 import org.biokoframework.system.service.random.RandomGeneratorService;
 import org.biokoframework.systema.commons.SystemARepositories;
-
-import java.util.ArrayList;
-
-import javax.mail.internet.MimeMessage;
-
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.fields.FieldValues;
 import org.biokoframework.utils.fields.Fields;

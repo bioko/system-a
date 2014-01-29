@@ -27,12 +27,11 @@
 
 package org.biokoframework.systema.command;
 
+import java.util.ArrayList;
+
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
 import org.biokoframework.system.command.Command;
 import org.biokoframework.system.command.CommandException;
-
-import java.util.ArrayList;
-
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.fields.Fields;
 

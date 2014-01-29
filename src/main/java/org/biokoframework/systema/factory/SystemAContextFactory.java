@@ -30,7 +30,6 @@ package org.biokoframework.systema.factory;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.biokoframework.system.ConfigurationEnum;
-import org.biokoframework.system.KILL_ME.exception.SystemException;
 import org.biokoframework.system.context.Context;
 import org.biokoframework.system.entity.authentication.Authentication;
 import org.biokoframework.system.entity.authentication.EmailConfirmation;

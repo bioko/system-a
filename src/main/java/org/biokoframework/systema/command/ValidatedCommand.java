@@ -27,6 +27,8 @@
 
 package org.biokoframework.systema.command;
 
+import java.util.ArrayList;
+
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
 import org.biokoframework.system.command.Command;
 import org.biokoframework.system.command.CommandException;
@@ -35,9 +37,6 @@ import org.biokoframework.systema.commons.SystemARepositories;
 import org.biokoframework.systema.entity.dummy1.DummyEntity1;
 import org.biokoframework.systema.entity.dummy2.DummyEntity2;
 import org.biokoframework.systema.factory.SystemACommands;
-
-import java.util.ArrayList;
-
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;

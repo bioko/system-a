@@ -27,12 +27,12 @@
 
 package org.biokoframework.systema.command;
 
+import org.apache.log4j.Logger;
 import org.biokoframework.system.command.Command;
 import org.biokoframework.system.command.CommandException;
 import org.biokoframework.system.context.Context;
 import org.biokoframework.system.exceptions.CommandExceptionsFactory;
 import org.biokoframework.systema.commons.SystemACommandNames;
-import org.apache.log4j.Logger;
 import org.biokoframework.utils.fields.Fields;
 
 public class CronFailingCommand extends Command {

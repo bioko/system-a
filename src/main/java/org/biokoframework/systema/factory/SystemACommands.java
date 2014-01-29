@@ -27,7 +27,6 @@
 
 package org.biokoframework.systema.factory;
 
-import org.biokoframework.utils.domain.annotation.field.Field;
 import org.biokoframework.system.ConfigurationEnum;
 import org.biokoframework.system.KILL_ME.commons.GenericCommandNames;
 import org.biokoframework.system.KILL_ME.commons.GenericFieldValues;
@@ -70,6 +69,7 @@ import org.biokoframework.systema.entity.dummy3.DummyEntity3;
 import org.biokoframework.systema.entity.dummyComplex.DummyComplexDomainEntity;
 import org.biokoframework.systema.validators.UniqueOptionalIntegerValidator;
 import org.biokoframework.systema.validators.UniqueTextMandatoryFieldValidator;
+import org.biokoframework.utils.domain.annotation.field.Field;
 
 public class SystemACommands {
 
