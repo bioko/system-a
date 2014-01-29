@@ -47,7 +47,7 @@ public class UniqueTextMandatoryFieldValidator extends AbstractValidator {
 	public void validate(Fields input, List<ErrorEntity> errors) {
 		Repository<DummyEntity1> dummy1Repo = _context.getRepository(SystemARepositories.DUMMY1);
 		
-		String valueToTest = input.stringNamed(ValidatedCommand.TEXT_MANDATORY_FIELD);
+		String valueToTest = input.get(ValidatedCommand.TEXT_MANDATORY_FIELD);
 		List<DummyEntity1> result = dummy1Repo.getEntitiesByForeignKey(DummyEntity1.VALUE, valueToTest);
 		
 		if (!result.isEmpty())

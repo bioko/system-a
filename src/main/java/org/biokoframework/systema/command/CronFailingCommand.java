@@ -49,7 +49,7 @@ public class CronFailingCommand extends Command {
 		
 		Logger logger = _context.get(Context.LOGGER);
 		logger.info("EXECUTING Command: " + this.getClass().getSimpleName());
-		logger.info("INPUT: " + input.asString());
+		logger.info("INPUT: " + input.toString());
 
 		throw CommandExceptionsFactory.createBadCommandInvocationException();
 

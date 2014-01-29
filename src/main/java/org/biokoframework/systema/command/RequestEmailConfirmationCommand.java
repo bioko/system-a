@@ -73,7 +73,7 @@ public class RequestEmailConfirmationCommand extends Command {
 
 		EmailConfirmation confirmation = new EmailConfirmation(Fields.empty());
 		
-		String userEmail = input.stringNamed(Login.USER_EMAIL);
+		String userEmail = input.get(Login.USER_EMAIL);
 		Login login = _loginRepo.retrieveByForeignKey(Login.USER_EMAIL, userEmail);
 		if (login == null) {
 			throw CommandExceptionsFactory.createEntityNotFound(Login.class.getSimpleName(), Login.USER_EMAIL, userEmail);

@@ -48,7 +48,7 @@ public class CronExampleCommand extends Command {
 	public Fields execute(Fields input) throws CommandException {
 		Logger logger = _context.get(Context.LOGGER);
 		logger.info("EXECUTING Command: " + this.getClass().getSimpleName());
-		logger.info("INPUT: " + input.asString());
+		logger.info("INPUT: " + input.toString());
 
 		Dummy1Mock.setShape(Dummy1Mock.QUADRATO);
 		

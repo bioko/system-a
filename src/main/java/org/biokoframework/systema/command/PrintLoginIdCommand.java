@@ -38,10 +38,10 @@ public class PrintLoginIdCommand extends Command {
 	@Override
 	public Fields execute(Fields input) throws CommandException {
 		logInput(input);
-		
-		String loginId = input.stringNamed(GenericFieldNames.AUTH_LOGIN_ID);
-		if (loginId==null)
-			loginId="";
+
+		String loginId = input.get(GenericFieldNames.AUTH_LOGIN_ID);
+		if (loginId == null)
+			loginId = "";
 		
 		Fields output = Fields.empty();
 		output.put("value", loginId);

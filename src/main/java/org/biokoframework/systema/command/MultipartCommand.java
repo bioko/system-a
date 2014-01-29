@@ -63,8 +63,8 @@ public class MultipartCommand extends Command {
 		Repository<BinaryEntity> blobRepo = _context.getRepository(SystemARepositories.BLOB_REPO_FOR_MULTIPART);
 		Repository<DummyMultipart> dummyMPRepo = _context.getRepository(SystemARepositories.DUMMY_MULTIPART_REPO);
 		
-		BinaryEntity firstFile = (BinaryEntity) input.objectNamed(FIRST_FILE_PART_NAME);
-		BinaryEntity secondFile = (BinaryEntity) input.objectNamed(SECOND_FILE_PART_NAME);
+		BinaryEntity firstFile = input.get(FIRST_FILE_PART_NAME);
+		BinaryEntity secondFile = input.get(SECOND_FILE_PART_NAME);
 		
 		DummyMultipart dummy = new DummyMultipart(input);
 		
