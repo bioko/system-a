@@ -27,6 +27,7 @@
 
 package org.biokoframework.systema.injection;
 
+import org.biokoframework.http.XServerSingleton;
 import org.biokoframework.system.service.context.ContextFactory;
 import org.biokoframework.systema.factory.SystemACommands;
 import org.biokoframework.systema.factory.SystemAContextFactory;
@@ -45,6 +46,9 @@ public class SystemAModule extends AbstractModule {
 		
 		bind(ContextFactory.class)
 			.to(SystemAContextFactory.class);
+		
+		bind(XServerSingleton.class)
+			.asEagerSingleton();
 		
 	}
 	
