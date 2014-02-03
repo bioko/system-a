@@ -42,7 +42,7 @@ public class Dummy1MockCommand extends Command {
 	@Override
 	public Fields execute(Fields input) throws CommandException {
 
-		Fields result = Fields.empty();
+		Fields result = new Fields();
 		
 		
 		

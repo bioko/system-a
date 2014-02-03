@@ -54,7 +54,7 @@ public class CronExampleCommand extends Command {
 		
 		logger.info("OUTPUT after execution: no output");
 		logger.info("END Command: " + this.getClass().getSimpleName());
-		return Fields.empty();
+		return new Fields();
 	}
 
 	@Override

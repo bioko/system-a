@@ -42,7 +42,7 @@ public class PrintLoginIdCommand extends Command {
 		if (loginId == null)
 			loginId = "";
 		
-		Fields output = Fields.empty();
+		Fields output = new Fields();
 		output.put("value", loginId);
 		
 		Fields result = Fields.single(GenericFieldNames.RESPONSE, output);

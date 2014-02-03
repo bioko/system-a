@@ -51,7 +51,7 @@ public class Dummy1Mock {
 	}
 
 	private static DummyEntity1 getQuadratoShape() {
-		Fields input = Fields.empty();		
+		Fields input = new Fields();		
 		input.put(DomainEntity.ID,"1");
 		input.put(DummyEntity1.VALUE,"quadrato");
 		
@@ -59,7 +59,7 @@ public class Dummy1Mock {
 	}
 	
 	private static DummyEntity1 getTriangoloShape() {
-		Fields input = Fields.empty();		
+		Fields input = new Fields();		
 		input.put(DomainEntity.ID,"2");
 		input.put(DummyEntity1.VALUE,"triangolo");
 		

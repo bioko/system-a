@@ -70,7 +70,7 @@ public class RequestEmailConfirmationCommand extends Command {
 	public Fields execute(Fields input) throws CommandException {
 		logInput(input);
 
-		EmailConfirmation confirmation = new EmailConfirmation(Fields.empty());
+		EmailConfirmation confirmation = new EmailConfirmation(new Fields());
 		
 		String userEmail = input.get(Login.USER_EMAIL);
 		Login login = _loginRepo.retrieveByForeignKey(Login.USER_EMAIL, userEmail);

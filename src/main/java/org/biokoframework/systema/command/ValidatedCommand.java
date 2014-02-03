@@ -54,7 +54,7 @@ public class ValidatedCommand extends Command{
 
 		// save text mandatory field into dummy1 entity repo
 		Repository<DummyEntity1> dummy1Repo = _context.getRepository(SystemARepositories.DUMMY1);
-		DummyEntity1 dummy1 = new DummyEntity1(Fields.empty());
+		DummyEntity1 dummy1 = new DummyEntity1(new Fields());
 		dummy1.set(DummyEntity1.VALUE, input.get(TEXT_MANDATORY_FIELD));
 		dummy1 = SafeRepositoryHelper.save(dummy1Repo, dummy1, _context);
 
@@ -62,7 +62,7 @@ public class ValidatedCommand extends Command{
 		String integerFieldValue = input.get(INTEGER_OPTIONAL_FIELD); 
 		if (integerFieldValue!=null && !integerFieldValue.isEmpty()) {
 			Repository<DummyEntity2> dummy2Repo = _context.getRepository(SystemARepositories.DUMMY2);
-			DummyEntity2 dummy2 = new DummyEntity2(Fields.empty());
+			DummyEntity2 dummy2 = new DummyEntity2(new Fields());
 			dummy2.set(DummyEntity2.VALUE, input.get(INTEGER_OPTIONAL_FIELD));
 			dummy2.set(DummyEntity2.ENTITY1_ID, dummy1.getId());
 			dummy2 = SafeRepositoryHelper.save(dummy2Repo, dummy2, _context);
