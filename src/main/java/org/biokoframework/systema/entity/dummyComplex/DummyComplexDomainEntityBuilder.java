@@ -40,7 +40,7 @@ public class DummyComplexDomainEntityBuilder extends EntityBuilder<DummyComplexD
 		putExample(EXAMPLE1, "{'id': '1', " +
 				"'aStringMandatoryField': 'I am a string', " +
 				"'aStringOptionalField': 'I am another string', " +
-				"'anIntegerOptionalField':'32', " +
+				"'anIntegerOptionalField':32, " +
 				"'aStringFieldMandatoryAlsoInGet':'group'" +
 				"}");
 		
