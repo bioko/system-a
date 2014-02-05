@@ -44,7 +44,7 @@ public class UniqueOptionalIntegerValidator extends AbstractValidator {
 	public void validate(Fields input, List<ErrorEntity> errors) {
 		Repository<DummyEntity2> dummy2Repo = _context.getRepository(SystemARepositories.DUMMY2);
 		
-		String valueToTest = input.get(ValidatedCommand.INTEGER_OPTIONAL_FIELD);
+		Long valueToTest = input.get(ValidatedCommand.INTEGER_OPTIONAL_FIELD);
 		List<DummyEntity2> result = dummy2Repo.getEntitiesByForeignKey(DummyEntity2.VALUE, valueToTest);
 		
 		if (!result.isEmpty())

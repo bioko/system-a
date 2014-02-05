@@ -37,7 +37,7 @@ public class DummyEntity2 extends DomainEntity {
 
 	public static final String ENTITY_KEY = "dummyEntity2Id";
 	
-	@Field
+	@Field(type = Long.class)
 	public static final String VALUE = "value";
 	
 	@Field(type=DummyEntity1.class)

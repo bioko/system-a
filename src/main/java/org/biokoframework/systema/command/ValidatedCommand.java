@@ -47,7 +47,6 @@ public class ValidatedCommand extends Command{
 	public static final String		TEXT_OPTIONAL_FIELD = "textOptionalField";
 	public static final String		INTEGER_OPTIONAL_FIELD = "integerOptionalField";
 
-
 	@Override
 	public Fields execute(Fields input) throws CommandException {
 		logInput(input);
@@ -59,8 +58,8 @@ public class ValidatedCommand extends Command{
 		dummy1 = SafeRepositoryHelper.save(dummy1Repo, dummy1, _context);
 
 		// save integer optional field into dummy2
-		String integerFieldValue = input.get(INTEGER_OPTIONAL_FIELD); 
-		if (integerFieldValue!=null && !integerFieldValue.isEmpty()) {
+		Long integerFieldValue = input.get(INTEGER_OPTIONAL_FIELD); 
+		if (integerFieldValue != null) {
 			Repository<DummyEntity2> dummy2Repo = _context.getRepository(SystemARepositories.DUMMY2);
 			DummyEntity2 dummy2 = new DummyEntity2(new Fields());
 			dummy2.set(DummyEntity2.VALUE, input.get(INTEGER_OPTIONAL_FIELD));
@@ -69,7 +68,7 @@ public class ValidatedCommand extends Command{
 		}
 
 		logOutput();
-		return Fields.single(GenericFieldNames.RESPONSE, new ArrayList<DomainEntity>());
+		return new Fields(GenericFieldNames.RESPONSE, new ArrayList<DomainEntity>());
 	}
 
 	@Override

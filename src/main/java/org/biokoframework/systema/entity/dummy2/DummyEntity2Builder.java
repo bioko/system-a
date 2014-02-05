@@ -36,7 +36,7 @@ public class DummyEntity2Builder extends EntityBuilder<DummyEntity2> {
 	public DummyEntity2Builder() {
 		super(DummyEntity2.class);
 
-		putExample(EXAMPLE1, "{'id':'1','dummyEntity1Id':'1','value':'gino2'}");
+		putExample(EXAMPLE1, "{'id':'1','dummyEntity1Id':'1','value':314}");
 	}
 
 	@Override

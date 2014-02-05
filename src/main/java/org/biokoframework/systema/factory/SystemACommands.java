@@ -210,7 +210,7 @@ public class SystemACommands {
 	@CommandInputs({
 		@Field(name=ValidatedCommand.TEXT_MANDATORY_FIELD),
 		@Field(name=ValidatedCommand.TEXT_OPTIONAL_FIELD, mandatory=false),
-		@Field(name=ValidatedCommand.INTEGER_OPTIONAL_FIELD, mandatory=false, type=Integer.class)
+		@Field(name=ValidatedCommand.INTEGER_OPTIONAL_FIELD, mandatory=false, type=Long.class)
 	})
 	public static final String VALIDATED_COMMAND = "validated-command";
 
@@ -224,7 +224,7 @@ public class SystemACommands {
 	@CommandInputs({
 		@Field(name=ValidatedCommand.TEXT_MANDATORY_FIELD),
 		@Field(name=ValidatedCommand.TEXT_OPTIONAL_FIELD, mandatory=false),
-		@Field(name=ValidatedCommand.INTEGER_OPTIONAL_FIELD, mandatory=false, type=Integer.class)
+		@Field(name=ValidatedCommand.INTEGER_OPTIONAL_FIELD, mandatory=false, type=Long.class)
 	})
 	@Validators({UniqueTextMandatoryFieldValidator.class})
 	public static final String VALIDATED_COMMAND_WITH_UNIQUE_VALIDATOR = "validated-command-with-unique-validator";
@@ -234,7 +234,7 @@ public class SystemACommands {
 	@CommandInputs({
 		@Field(name=ValidatedCommand.TEXT_MANDATORY_FIELD),
 		@Field(name=ValidatedCommand.TEXT_OPTIONAL_FIELD, mandatory=false),
-		@Field(name=ValidatedCommand.INTEGER_OPTIONAL_FIELD, mandatory=false, type=Integer.class)
+		@Field(name=ValidatedCommand.INTEGER_OPTIONAL_FIELD, mandatory=false, type=Long.class)
 	})
 	@Validators({UniqueTextMandatoryFieldValidator.class, UniqueOptionalIntegerValidator.class})
 	public static final String VALIDATED_COMMAND_WITH_TWO_UNIQUE_VALIDATORS = "validated-command-with-two-unique-validators";
