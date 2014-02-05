@@ -46,12 +46,5 @@ public class DummyComplexDomainEntity extends DomainEntity {
 	public DummyComplexDomainEntity(Fields input) {
 		super(input);
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }
