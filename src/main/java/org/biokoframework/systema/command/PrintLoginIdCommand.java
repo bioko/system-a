@@ -45,7 +45,7 @@ public class PrintLoginIdCommand extends Command {
 		Fields output = new Fields();
 		output.put("value", loginId);
 		
-		Fields result = Fields.single(GenericFieldNames.RESPONSE, output);
+		Fields result = new Fields(GenericFieldNames.RESPONSE, output);
 		
 		logOutput(result);
 		

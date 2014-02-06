@@ -69,7 +69,7 @@ public class ValidatedCommand extends Command{
 		}
 
 		logOutput();
-		return Fields.single(GenericFieldNames.RESPONSE, new ArrayList<DomainEntity>());
+		return new Fields(GenericFieldNames.RESPONSE, new ArrayList<DomainEntity>());
 	}
 
 	@Override

@@ -97,7 +97,7 @@ public class RequestEmailConfirmationCommand extends Command {
 		emailService.send(message);
 		
 		logOutput();
-		return Fields.single(GenericFieldNames.RESPONSE, new ArrayList<DomainEntity>());
+		return new Fields(GenericFieldNames.RESPONSE, new ArrayList<DomainEntity>());
 	}
 
 }

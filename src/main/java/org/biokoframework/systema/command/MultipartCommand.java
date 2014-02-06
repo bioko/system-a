@@ -77,7 +77,7 @@ public class MultipartCommand extends Command {
 		SafeRepositoryHelper.save(dummyMPRepo, dummy, _context);
 		
 		logOutput();
-		return Fields.single(GenericFieldNames.RESPONSE, Arrays.asList(dummy));
+		return new Fields(GenericFieldNames.RESPONSE, Arrays.asList(dummy));
 	}
 
 	@Override
