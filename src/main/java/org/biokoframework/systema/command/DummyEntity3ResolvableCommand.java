@@ -44,13 +44,13 @@ public class DummyEntity3ResolvableCommand extends ResolvableCommand {
 	@Override
 	public void onContextInitialized()  {
 		try {
-			_baseCommand = _context.getCommandHandler().getByName("GET_dummy-entity3");
+			fBaseCommand = fContext.getCommandHandler().getByName("GET_dummy-entity3");
 		} catch (CommandException e) {			
 			e.printStackTrace();
 		}
 		
-		Repository<DummyEntity1> dummy1Repo = _context.getRepository(SystemARepositories.DUMMY1);
-		Repository<DummyEntity2> dummy2Repo = _context.getRepository(SystemARepositories.DUMMY2);
+		Repository<DummyEntity1> dummy1Repo = fContext.getRepository(SystemARepositories.DUMMY1);
+		Repository<DummyEntity2> dummy2Repo = fContext.getRepository(SystemARepositories.DUMMY2);
 		
 		with(dummy1Repo, DummyEntity1.class);
 		with(dummy2Repo, DummyEntity2.class);

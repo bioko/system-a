@@ -30,7 +30,7 @@ package org.biokoframework.systema.command;
 import java.util.ArrayList;
 
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
-import org.biokoframework.system.command.Command;
+import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
 import org.biokoframework.system.repository.core.SafeRepositoryHelper;
 import org.biokoframework.systema.commons.SystemARepositories;
@@ -41,7 +41,7 @@ import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;
 
-public class ValidatedCommand extends Command{
+public class ValidatedCommand extends AbstractCommand{
 
 	public static final String		TEXT_MANDATORY_FIELD = "textMandatoryField";
 	public static final String		TEXT_OPTIONAL_FIELD = "textOptionalField";
@@ -52,19 +52,19 @@ public class ValidatedCommand extends Command{
 		logInput(input);
 
 		// save text mandatory field into dummy1 entity repo
-		Repository<DummyEntity1> dummy1Repo = _context.getRepository(SystemARepositories.DUMMY1);
+		Repository<DummyEntity1> dummy1Repo = fContext.getRepository(SystemARepositories.DUMMY1);
 		DummyEntity1 dummy1 = new DummyEntity1(new Fields());
 		dummy1.set(DummyEntity1.VALUE, input.get(TEXT_MANDATORY_FIELD));
-		dummy1 = SafeRepositoryHelper.save(dummy1Repo, dummy1, _context);
+		dummy1 = SafeRepositoryHelper.save(dummy1Repo, dummy1, fContext);
 
 		// save integer optional field into dummy2
 		Long integerFieldValue = input.get(INTEGER_OPTIONAL_FIELD); 
 		if (integerFieldValue != null) {
-			Repository<DummyEntity2> dummy2Repo = _context.getRepository(SystemARepositories.DUMMY2);
+			Repository<DummyEntity2> dummy2Repo = fContext.getRepository(SystemARepositories.DUMMY2);
 			DummyEntity2 dummy2 = new DummyEntity2(new Fields());
 			dummy2.set(DummyEntity2.VALUE, input.get(INTEGER_OPTIONAL_FIELD));
 			dummy2.set(DummyEntity2.ENTITY1_ID, dummy1.getId());
-			dummy2 = SafeRepositoryHelper.save(dummy2Repo, dummy2, _context);
+			dummy2 = SafeRepositoryHelper.save(dummy2Repo, dummy2, fContext);
 		}
 
 		logOutput();

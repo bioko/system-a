@@ -28,6 +28,7 @@
 package org.biokoframework.systema.injection;
 
 import org.biokoframework.http.BiokoServlet;
+import org.biokoframework.system.services.RepositoryModule;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -39,6 +40,7 @@ public class SystemAServletConfig extends GuiceServletContextListener {
 	@Override
 	protected Injector getInjector() {
 		Injector injector = Guice.createInjector(
+				new RepositoryModule(),
 				new SystemAModule(),
 				new ServletModule() {
 					@Override

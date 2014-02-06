@@ -28,11 +28,11 @@
 package org.biokoframework.systema.command;
 
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
-import org.biokoframework.system.command.Command;
+import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
 import org.biokoframework.utils.fields.Fields;
 
-public class PrintLoginIdCommand extends Command {
+public class PrintLoginIdCommand extends AbstractCommand {
 
 	@Override
 	public Fields execute(Fields input) throws CommandException {

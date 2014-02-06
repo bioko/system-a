@@ -38,8 +38,8 @@ public class ExampleDissolvedCommandWithAnnotation extends DissolvedCommand {
 	@Override
 	public void onContextInitialized() {
 		
-		Repository<DummyEntity1> dummyEntity1Repo = _context.getRepository(SystemARepositories.DUMMY1);
-		Repository<DummyEntity2> dummyEntity2Repo = _context.getRepository(SystemARepositories.DUMMY2);
+		Repository<DummyEntity1> dummyEntity1Repo = fContext.getRepository(SystemARepositories.DUMMY1);
+		Repository<DummyEntity2> dummyEntity2Repo = fContext.getRepository(SystemARepositories.DUMMY2);
 		
 		savingIn(dummyEntity1Repo, DummyEntity1.class);
 		savingIn(dummyEntity2Repo, DummyEntity2.class);

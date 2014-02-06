@@ -30,13 +30,13 @@ package org.biokoframework.systema.command;
 import java.util.ArrayList;
 
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
-import org.biokoframework.system.command.Command;
+import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.fields.Fields;
 
 
-public class DummyEmptyCommand extends Command {
+public class DummyEmptyCommand extends AbstractCommand {
 
 	@Override
 	public Fields execute(Fields input) throws CommandException {

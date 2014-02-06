@@ -28,17 +28,17 @@
 package org.biokoframework.systema.command;
 
 import org.apache.log4j.Logger;
-import org.biokoframework.system.command.Command;
+import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
 import org.biokoframework.system.context.Context;
 import org.biokoframework.system.exceptions.CommandExceptionsFactory;
 import org.biokoframework.systema.commons.SystemACommandNames;
 import org.biokoframework.utils.fields.Fields;
 
-public class CronFailingCommand extends Command {
+public class CronFailingCommand extends AbstractCommand {
 
 	public CronFailingCommand(Context context) {
-		_context = context;
+		fContext = context;
 	}
 	
 	public CronFailingCommand() {		
@@ -47,7 +47,7 @@ public class CronFailingCommand extends Command {
 	@Override
 	public Fields execute(Fields input) throws CommandException {
 		
-		Logger logger = _context.get(Context.LOGGER);
+		Logger logger = fContext.get(Context.LOGGER);
 		logger.info("EXECUTING Command: " + this.getClass().getSimpleName());
 		logger.info("INPUT: " + input.toString());
 

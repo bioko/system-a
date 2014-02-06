@@ -30,7 +30,7 @@ package org.biokoframework.systema.command;
 import java.util.Arrays;
 
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
-import org.biokoframework.system.command.Command;
+import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
 import org.biokoframework.system.context.Context;
 import org.biokoframework.system.entity.binary.BinaryEntity;
@@ -42,7 +42,7 @@ import org.biokoframework.utils.repository.Repository;
 
 
 
-public class MultipartCommand extends Command {
+public class MultipartCommand extends AbstractCommand {
 
 	public static final String FIRST_FILE_PART_NAME = "firstFile";
 	public static final String SECOND_FILE_PART_NAME = "secondFile";
@@ -51,7 +51,7 @@ public class MultipartCommand extends Command {
 	}
 	
 	public MultipartCommand(Context context) {
-		_context = context;
+		fContext = context;
 	}
 	
 	
@@ -59,8 +59,8 @@ public class MultipartCommand extends Command {
 	public Fields execute(Fields input) throws CommandException {
 		logInput(input);
 		
-		Repository<BinaryEntity> blobRepo = _context.getRepository(SystemARepositories.BLOB_REPO_FOR_MULTIPART);
-		Repository<DummyMultipart> dummyMPRepo = _context.getRepository(SystemARepositories.DUMMY_MULTIPART_REPO);
+		Repository<BinaryEntity> blobRepo = fContext.getRepository(SystemARepositories.BLOB_REPO_FOR_MULTIPART);
+		Repository<DummyMultipart> dummyMPRepo = fContext.getRepository(SystemARepositories.DUMMY_MULTIPART_REPO);
 		
 		BinaryEntity firstFile = input.get(FIRST_FILE_PART_NAME);
 		BinaryEntity secondFile = input.get(SECOND_FILE_PART_NAME);
@@ -68,13 +68,13 @@ public class MultipartCommand extends Command {
 		DummyMultipart dummy = new DummyMultipart(input);
 		
 		// save blobs int its repo
-		SafeRepositoryHelper.save(blobRepo, firstFile, _context);
-		SafeRepositoryHelper.save(blobRepo, secondFile, _context);
+		SafeRepositoryHelper.save(blobRepo, firstFile, fContext);
+		SafeRepositoryHelper.save(blobRepo, secondFile, fContext);
 		
 		dummy.set(DummyMultipart.FIRST_FILE_ID, firstFile.getId());
 		dummy.set(DummyMultipart.SECOND_FILE_ID, secondFile.getId());
 		
-		SafeRepositoryHelper.save(dummyMPRepo, dummy, _context);
+		SafeRepositoryHelper.save(dummyMPRepo, dummy, fContext);
 		
 		logOutput();
 		return new Fields(GenericFieldNames.RESPONSE, Arrays.asList(dummy));
