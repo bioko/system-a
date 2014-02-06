@@ -43,7 +43,7 @@ public class DummyEmptyCommand extends Command {
 		logInput(input);
 		// do nothing
 		logOutput();
-		return Fields.single(GenericFieldNames.RESPONSE, new ArrayList<DomainEntity>());
+		return new Fields(GenericFieldNames.RESPONSE, new ArrayList<DomainEntity>());
 	}
 
 	@Override
