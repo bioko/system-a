@@ -34,7 +34,7 @@ import org.biokoframework.utils.fields.Fields;
 @SuppressWarnings("serial")
 public class DummyEntityWithInteger extends DomainEntity {
 
-	@Field(type=Integer.class)
+	@Field(type = Long.class)
 	public static final String VALUE = "value";
 	
 	

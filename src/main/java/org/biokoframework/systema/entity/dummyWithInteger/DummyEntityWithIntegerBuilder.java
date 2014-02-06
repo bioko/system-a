@@ -42,11 +42,11 @@ public class DummyEntityWithIntegerBuilder extends EntityBuilder<DummyEntityWith
 	public DummyEntityWithIntegerBuilder() {
 		super(DummyEntityWithInteger.class);
 		
-		putExample(EXAMPLE1, "{ 'id':'1', 'value':'1' } ");
-		putExample(EXAMPLE2, "{ 'id':'2', 'value':'2' } ");
-		putExample(EXAMPLE3, "{ 'id':'3', 'value':'3' } ");
-		putExample(EXAMPLE4, "{ 'id':'4', 'value':'4' } ");
-		putExample(EXAMPLE5, "{ 'id':'5', 'value':'5' } ");
+		putExample(EXAMPLE1, "{ 'id':'1', 'value':1 } ");
+		putExample(EXAMPLE2, "{ 'id':'2', 'value':2 } ");
+		putExample(EXAMPLE3, "{ 'id':'3', 'value':3 } ");
+		putExample(EXAMPLE4, "{ 'id':'4', 'value':4 } ");
+		putExample(EXAMPLE5, "{ 'id':'5', 'value':5 } ");
 		
 		
 	}
