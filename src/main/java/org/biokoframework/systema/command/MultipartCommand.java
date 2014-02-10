@@ -35,7 +35,6 @@ import org.biokoframework.system.command.CommandException;
 import org.biokoframework.system.context.Context;
 import org.biokoframework.system.entity.binary.BinaryEntity;
 import org.biokoframework.system.repository.core.SafeRepositoryHelper;
-import org.biokoframework.systema.commons.SystemARepositories;
 import org.biokoframework.systema.entity.dummyMultipart.DummyMultipart;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;
@@ -59,8 +58,8 @@ public class MultipartCommand extends AbstractCommand {
 	public Fields execute(Fields input) throws CommandException {
 		logInput(input);
 		
-		Repository<BinaryEntity> blobRepo = fContext.getRepository(SystemARepositories.BLOB_REPO_FOR_MULTIPART);
-		Repository<DummyMultipart> dummyMPRepo = fContext.getRepository(SystemARepositories.DUMMY_MULTIPART_REPO);
+		Repository<BinaryEntity> blobRepo = getRepository(BinaryEntity.class);
+		Repository<DummyMultipart> dummyMPRepo = getRepository(DummyMultipart.class);
 		
 		BinaryEntity firstFile = input.get(FIRST_FILE_PART_NAME);
 		BinaryEntity secondFile = input.get(SECOND_FILE_PART_NAME);

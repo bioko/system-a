@@ -33,7 +33,6 @@ import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
 import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
 import org.biokoframework.system.repository.core.SafeRepositoryHelper;
-import org.biokoframework.systema.commons.SystemARepositories;
 import org.biokoframework.systema.entity.dummy1.DummyEntity1;
 import org.biokoframework.systema.entity.dummy2.DummyEntity2;
 import org.biokoframework.systema.factory.SystemACommands;
@@ -52,7 +51,7 @@ public class ValidatedCommand extends AbstractCommand{
 		logInput(input);
 
 		// save text mandatory field into dummy1 entity repo
-		Repository<DummyEntity1> dummy1Repo = fContext.getRepository(SystemARepositories.DUMMY1);
+		Repository<DummyEntity1> dummy1Repo = getRepository(DummyEntity1.class);
 		DummyEntity1 dummy1 = new DummyEntity1(new Fields());
 		dummy1.set(DummyEntity1.VALUE, input.get(TEXT_MANDATORY_FIELD));
 		dummy1 = SafeRepositoryHelper.save(dummy1Repo, dummy1, fContext);
@@ -60,7 +59,7 @@ public class ValidatedCommand extends AbstractCommand{
 		// save integer optional field into dummy2
 		Long integerFieldValue = input.get(INTEGER_OPTIONAL_FIELD); 
 		if (integerFieldValue != null) {
-			Repository<DummyEntity2> dummy2Repo = fContext.getRepository(SystemARepositories.DUMMY2);
+			Repository<DummyEntity2> dummy2Repo = getRepository(DummyEntity2.class);
 			DummyEntity2 dummy2 = new DummyEntity2(new Fields());
 			dummy2.set(DummyEntity2.VALUE, input.get(INTEGER_OPTIONAL_FIELD));
 			dummy2.set(DummyEntity2.ENTITY1_ID, dummy1.getId());

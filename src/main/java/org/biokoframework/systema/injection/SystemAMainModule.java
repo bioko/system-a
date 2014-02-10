@@ -36,7 +36,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import com.google.inject.name.Names;
 
-public class SystemAModule extends AbstractModule {
+public class SystemAMainModule extends AbstractModule {
 
 	@Override
 	public void configure() {

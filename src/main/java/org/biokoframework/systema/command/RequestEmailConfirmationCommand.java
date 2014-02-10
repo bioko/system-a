@@ -42,9 +42,7 @@ import org.biokoframework.system.repository.core.SafeRepositoryHelper;
 import org.biokoframework.system.service.mail.EmailFiller;
 import org.biokoframework.system.service.mail.EmailServiceImplementation;
 import org.biokoframework.system.service.random.RandomGeneratorService;
-import org.biokoframework.systema.commons.SystemARepositories;
 import org.biokoframework.utils.domain.DomainEntity;
-import org.biokoframework.utils.fields.FieldValues;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;
 
@@ -52,17 +50,13 @@ public class RequestEmailConfirmationCommand extends AbstractCommand {
 
 	public static final String EMAIL_CONFIRMATION_TOKEN = "emailConfirmationToken";
 	
-	private Repository<Login> _loginRepo;
-	private Repository<EmailConfirmation> _confirmationRepo;
-	private RandomGeneratorService _randomTokenService;
+	private RandomGeneratorService fRandomTokenService;
 	
 	@Override
 	public void onContextInitialized() {
 		super.onContextInitialized();
 		
-		_loginRepo = fContext.getRepository(SystemARepositories.LOGIN);
-		_confirmationRepo = fContext.getRepository(SystemARepositories.EMAIL_CONFIRMATION);
-		_randomTokenService = (RandomGeneratorService) fContext.get(GenericConstants.CONTEXT_RANDOM_GENERATOR_SERVICE);
+		fRandomTokenService = (RandomGeneratorService) fContext.get(GenericConstants.CONTEXT_RANDOM_GENERATOR_SERVICE);
 		
 	}
 
@@ -70,20 +64,23 @@ public class RequestEmailConfirmationCommand extends AbstractCommand {
 	public Fields execute(Fields input) throws CommandException {
 		logInput(input);
 
+		Repository<Login> loginRepo = getRepository(Login.class);
+		Repository<EmailConfirmation> confirmationRepo = getRepository(EmailConfirmation.class);
+
 		EmailConfirmation confirmation = new EmailConfirmation(new Fields());
 		
 		String userEmail = input.get(Login.USER_EMAIL);
-		Login login = _loginRepo.retrieveByForeignKey(Login.USER_EMAIL, userEmail);
+		Login login = loginRepo.retrieveByForeignKey(Login.USER_EMAIL, userEmail);
 		if (login == null) {
 			throw CommandExceptionsFactory.createEntityNotFound(Login.class.getSimpleName(), Login.USER_EMAIL, userEmail);
 		}
 		
-		String token = _randomTokenService.generateString(EMAIL_CONFIRMATION_TOKEN, 10);
+		String token = fRandomTokenService.generateString(EMAIL_CONFIRMATION_TOKEN, 10);
 		
 		confirmation.set(EmailConfirmation.LOGIN_ID, login.getId());
 		confirmation.set(EmailConfirmation.TOKEN, token);
-		confirmation.set(EmailConfirmation.CONFIRMED, FieldValues.FALSE);
-		SafeRepositoryHelper.save(_confirmationRepo, confirmation, fContext);
+		confirmation.set(EmailConfirmation.CONFIRMED, false);
+		SafeRepositoryHelper.save(confirmationRepo, confirmation, fContext);
 		
 		EmailServiceImplementation emailService = EmailServiceImplementation.mailServer();
 		EmailFiller filler = new EmailFiller();

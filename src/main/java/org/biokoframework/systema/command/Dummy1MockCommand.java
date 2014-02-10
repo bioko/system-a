@@ -44,12 +44,9 @@ public class Dummy1MockCommand extends AbstractCommand {
 
 		Fields result = new Fields();
 		
-		
-		
 		ArrayList<DomainEntity> responsEntities = new ArrayList<DomainEntity>();
 		responsEntities.add(Dummy1Mock.getShape());
 		result.put(GenericFieldNames.RESPONSE, responsEntities );
-		
 		
 		return result;
 	}

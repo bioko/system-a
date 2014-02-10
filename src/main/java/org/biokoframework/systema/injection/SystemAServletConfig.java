@@ -27,8 +27,11 @@
 
 package org.biokoframework.systema.injection;
 
+import javax.servlet.ServletContextEvent;
+
 import org.biokoframework.http.BiokoServlet;
-import org.biokoframework.system.services.RepositoryModule;
+import org.biokoframework.system.ConfigurationEnum;
+import org.biokoframework.system.services.currenttime.CurrentTimeModule;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -37,11 +40,21 @@ import com.google.inject.servlet.ServletModule;
 
 public class SystemAServletConfig extends GuiceServletContextListener {
 
+	private ConfigurationEnum fConfig;
+	
+	public void contextInitialized(ServletContextEvent servletContextEvent) {
+		// fConfig = servletContextEvent.getServletContext().getAttribute("systemConfig");
+		fConfig = ConfigurationEnum.DEV;
+		
+		super.contextInitialized(servletContextEvent);
+	}
+	
 	@Override
-	protected Injector getInjector() {
+	protected Injector getInjector() {	
 		Injector injector = Guice.createInjector(
-				new RepositoryModule(),
-				new SystemAModule(),
+				new SystemAMainModule(),
+				new CurrentTimeModule(fConfig),
+				new SystemAMemRepoModule(),
 				new ServletModule() {
 					@Override
 					protected void configureServlets() {
