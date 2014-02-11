@@ -52,9 +52,4 @@ public class PrintLoginIdCommand extends AbstractCommand {
 		return result;
 	}
 
-	@Override
-	public String getName() {
-		return this.getClass().getSimpleName();
-	}
-
 }

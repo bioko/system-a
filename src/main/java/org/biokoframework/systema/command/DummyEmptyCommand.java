@@ -46,9 +46,4 @@ public class DummyEmptyCommand extends AbstractCommand {
 		return new Fields(GenericFieldNames.RESPONSE, new ArrayList<DomainEntity>());
 	}
 
-	@Override
-	public String getName() {		
-		return this.getClass().getSimpleName();
-	}
-
 }

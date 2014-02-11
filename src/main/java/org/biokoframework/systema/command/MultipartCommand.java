@@ -79,9 +79,4 @@ public class MultipartCommand extends AbstractCommand {
 		return new Fields(GenericFieldNames.RESPONSE, Arrays.asList(dummy));
 	}
 
-	@Override
-	public String getName() {
-		return this.getClass().getSimpleName();
-	}
-
 }

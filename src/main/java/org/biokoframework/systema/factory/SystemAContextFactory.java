@@ -29,7 +29,6 @@ package org.biokoframework.systema.factory;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.biokoframework.system.ConfigurationEnum;
 import org.biokoframework.system.context.Context;
 import org.biokoframework.system.entity.authentication.Authentication;
 import org.biokoframework.system.entity.binary.BinaryEntity;
@@ -40,8 +39,6 @@ import org.biokoframework.system.repository.sql.MySQLConnector;
 import org.biokoframework.system.repository.sql.SqlConstants;
 import org.biokoframework.system.repository.sql.SqlRepository;
 import org.biokoframework.system.service.context.AbstractContextFactory;
-import org.biokoframework.system.service.random.RandomGeneratorService;
-import org.biokoframework.systema.commons.SystemAConstants;
 import org.biokoframework.systema.commons.SystemARepositories;
 import org.biokoframework.systema.entity.dummy1.DummyEntity1;
 import org.biokoframework.systema.entity.dummy2.DummyEntity2;
@@ -81,8 +78,8 @@ public class SystemAContextFactory extends AbstractContextFactory {
 //		CurrentTimeService timeService = new CurrentTimeService(ConfigurationEnum.DEV);
 //		context.put(SystemAConstants.CONTEXT_CURRENT_TIME_SERVICE, timeService);
 		
-		RandomGeneratorService randomService = new RandomGeneratorService(ConfigurationEnum.DEV);
-		context.put(SystemAConstants.CONTEXT_RANDOM_GENERATOR_SERVICE, randomService);
+//		RandomGeneratorService randomService = new RandomGeneratorService(ConfigurationEnum.DEV);
+//		context.put(SystemAConstants.CONTEXT_RANDOM_GENERATOR_SERVICE, randomService);
 		
 		context.addSystemListener(new TestShutdownListener());
 		

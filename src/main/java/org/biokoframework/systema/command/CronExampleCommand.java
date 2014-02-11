@@ -31,7 +31,6 @@ import org.apache.log4j.Logger;
 import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
 import org.biokoframework.system.context.Context;
-import org.biokoframework.systema.commons.SystemACommandNames;
 import org.biokoframework.systema.misc.Dummy1Mock;
 import org.biokoframework.utils.fields.Fields;
 
@@ -55,11 +54,6 @@ public class CronExampleCommand extends AbstractCommand {
 		logger.info("OUTPUT after execution: no output");
 		logger.info("END Command: " + this.getClass().getSimpleName());
 		return new Fields();
-	}
-
-	@Override
-	public String getName() {
-		return SystemACommandNames.CRON_EXAMPLE;
 	}
 
 }

@@ -35,7 +35,6 @@ import org.biokoframework.system.command.CommandException;
 import org.biokoframework.system.repository.core.SafeRepositoryHelper;
 import org.biokoframework.systema.entity.dummy1.DummyEntity1;
 import org.biokoframework.systema.entity.dummy2.DummyEntity2;
-import org.biokoframework.systema.factory.SystemACommands;
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;
@@ -69,12 +68,5 @@ public class ValidatedCommand extends AbstractCommand{
 		logOutput();
 		return new Fields(GenericFieldNames.RESPONSE, new ArrayList<DomainEntity>());
 	}
-
-	@Override
-	public String getName() {
-		return SystemACommands.VALIDATED_COMMAND;
-	}
-
-
 
 }

@@ -32,7 +32,6 @@ import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
 import org.biokoframework.system.context.Context;
 import org.biokoframework.system.exceptions.CommandExceptionsFactory;
-import org.biokoframework.systema.commons.SystemACommandNames;
 import org.biokoframework.utils.fields.Fields;
 
 public class CronFailingCommand extends AbstractCommand {
@@ -53,11 +52,6 @@ public class CronFailingCommand extends AbstractCommand {
 
 		throw CommandExceptionsFactory.createBadCommandInvocationException();
 
-	}
-
-	@Override
-	public String getName() {
-		return SystemACommandNames.CRON_FAILING_EXAMPLE;
 	}
 
 }

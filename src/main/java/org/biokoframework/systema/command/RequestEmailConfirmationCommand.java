@@ -31,7 +31,6 @@ import java.util.ArrayList;
 
 import javax.mail.internet.MimeMessage;
 
-import org.biokoframework.system.KILL_ME.commons.GenericConstants;
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
 import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
@@ -41,23 +40,22 @@ import org.biokoframework.system.exceptions.CommandExceptionsFactory;
 import org.biokoframework.system.repository.core.SafeRepositoryHelper;
 import org.biokoframework.system.service.mail.EmailFiller;
 import org.biokoframework.system.service.mail.EmailServiceImplementation;
-import org.biokoframework.system.service.random.RandomGeneratorService;
+import org.biokoframework.system.services.random.IRandomService;
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;
+
+import com.google.inject.Inject;
 
 public class RequestEmailConfirmationCommand extends AbstractCommand {
 
 	public static final String EMAIL_CONFIRMATION_TOKEN = "emailConfirmationToken";
 	
-	private RandomGeneratorService fRandomTokenService;
+	private final IRandomService fRandomTokenService;
 	
-	@Override
-	public void onContextInitialized() {
-		super.onContextInitialized();
-		
-		fRandomTokenService = (RandomGeneratorService) fContext.get(GenericConstants.CONTEXT_RANDOM_GENERATOR_SERVICE);
-		
+	@Inject
+	public RequestEmailConfirmationCommand(IRandomService randomService) {
+		fRandomTokenService = randomService;
 	}
 
 	@Override
