@@ -31,9 +31,10 @@ import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.domain.annotation.field.Field;
 import org.biokoframework.utils.fields.Fields;
 
-@SuppressWarnings("serial")
 public class DummyComplexDomainEntity extends DomainEntity {
 
+	private static final long serialVersionUID = -1236684969203164435L;
+	
 	@Field
 	public static final String A_STRING_MANDATORY_FIELD = "aStringMandatoryField";
 	@Field(mandatory = false)

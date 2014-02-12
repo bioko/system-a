@@ -31,9 +31,10 @@ import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.domain.annotation.field.Field;
 import org.biokoframework.utils.fields.Fields;
 
-@SuppressWarnings("serial")
 public class DummyMultipart extends DomainEntity {
 
+	private static final long serialVersionUID = 1543180432919069945L;
+	
 	@Field
 	public static final String		FIRST_TEXT_FIELD	=	"firstTextField";
 	@Field

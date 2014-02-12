@@ -33,9 +33,10 @@ import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.validator.Validator;
 import org.joda.time.DateTime;
 
-@SuppressWarnings("serial")
 public class DummyEntityWithDate extends DomainEntity {
 
+	private static final long serialVersionUID = -2989408276331032151L;
+	
 	@Field(type=DateTime.class, dateFormat=Validator.ISO_TIMESTAMP)
 	public static final String VALUE = "value";
 	
