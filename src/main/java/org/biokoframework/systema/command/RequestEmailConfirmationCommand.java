@@ -29,8 +29,6 @@ package org.biokoframework.systema.command;
 
 import java.util.ArrayList;
 
-import javax.mail.internet.MimeMessage;
-
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
 import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
@@ -38,24 +36,31 @@ import org.biokoframework.system.entity.authentication.EmailConfirmation;
 import org.biokoframework.system.entity.login.Login;
 import org.biokoframework.system.exceptions.CommandExceptionsFactory;
 import org.biokoframework.system.repository.core.SafeRepositoryHelper;
-import org.biokoframework.system.service.mail.EmailFiller;
-import org.biokoframework.system.service.mail.EmailServiceImplementation;
+import org.biokoframework.system.services.email.EmailException;
+import org.biokoframework.system.services.email.IEmailService;
 import org.biokoframework.system.services.random.IRandomService;
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 public class RequestEmailConfirmationCommand extends AbstractCommand {
 
 	public static final String EMAIL_CONFIRMATION_TOKEN = "emailConfirmationToken";
+
+	private static final String EMAIL_CONFIRMATION_SUBJECT = "Email confirmation";
 	
 	private final IRandomService fRandomTokenService;
+	private final IEmailService fEmailService;
+	private final String fNoReplyEmailAddress;
 	
 	@Inject
-	public RequestEmailConfirmationCommand(IRandomService randomService) {
+	public RequestEmailConfirmationCommand(IRandomService randomService, IEmailService emailService, @Named("noReplyEmailAddress") String noreplyEmailAddress) {
 		fRandomTokenService = randomService;
+		fEmailService = emailService;
+		fNoReplyEmailAddress = noreplyEmailAddress;
 	}
 
 	@Override
@@ -80,16 +85,19 @@ public class RequestEmailConfirmationCommand extends AbstractCommand {
 		confirmation.set(EmailConfirmation.CONFIRMED, false);
 		SafeRepositoryHelper.save(confirmationRepo, confirmation, fContext);
 		
-		EmailServiceImplementation emailService = EmailServiceImplementation.mailServer();
-		EmailFiller filler = new EmailFiller();
-		filler.setFrom("noreply@engaged.it");
-		filler.addTo(userEmail);
-		filler.setSubject("Email confirmation");
-		filler.setContent("<html>\n<body>\nClicca sul link riportato sotto per confermare la tua mail\n<a href=\"http://www.example.net/confirm-email?token=" + token + "&userEmail=" + userEmail + ">Conferma email</a>\n<body>\n</html>");
+		// TODO extract template
+		String mailContent = new StringBuilder().
+				append("<html>\n<body>\n").
+				append("Clicca sul link riportato sotto per confermare la tua mail\n").
+				append("<a href=\"http://www.example.net/confirm-email?token=").
+					append(token).append("&userEmail=").append(userEmail).append(">").
+				append("Conferma email</a>\n<body>\n</html>").toString();
 		
-		MimeMessage message = emailService.newMessage();
-		filler.fill(message);
-		emailService.send(message);
+		try {
+			fEmailService.sendASAP(userEmail, fNoReplyEmailAddress, mailContent, EMAIL_CONFIRMATION_SUBJECT);
+		} catch (EmailException exception) {
+			throw CommandExceptionsFactory.createContainerException(exception);
+		}
 		
 		logOutput();
 		return new Fields(GenericFieldNames.RESPONSE, new ArrayList<DomainEntity>());

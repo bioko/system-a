@@ -31,8 +31,6 @@ import javax.servlet.ServletContextEvent;
 
 import org.biokoframework.http.BiokoServlet;
 import org.biokoframework.system.ConfigurationEnum;
-import org.biokoframework.system.services.currenttime.CurrentTimeModule;
-import org.biokoframework.system.services.random.RandomModule;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -53,10 +51,8 @@ public class SystemAServletConfig extends GuiceServletContextListener {
 	@Override
 	protected Injector getInjector() {	
 		Injector injector = Guice.createInjector(
-				new SystemAMainModule(),
-				new CurrentTimeModule(fConfig),
-				new RandomModule(fConfig),
-				new SystemAMemRepoModule(),
+				new SystemAMainModule(fConfig),
+				
 				new ServletModule() {
 					@Override
 					protected void configureServlets() {

@@ -27,29 +27,70 @@
 
 package org.biokoframework.systema.injection;
 
-import org.biokoframework.http.XServerSingleton;
-import org.biokoframework.system.service.context.ContextFactory;
+import org.biokoframework.http.exception.ExceptionResponseModule;
+import org.biokoframework.http.handler.IHandlerLocator;
+import org.biokoframework.http.handler.annotation.AnnotationHandlerLocator;
+import org.biokoframework.http.routing.RouteParserModule;
+import org.biokoframework.system.ConfigurationEnum;
+import org.biokoframework.system.SystemMainModule;
+import org.biokoframework.system.services.cron.CronModule;
+import org.biokoframework.system.services.currenttime.CurrentTimeModule;
+import org.biokoframework.system.services.email.EmailModule;
+import org.biokoframework.system.services.queue.QueueModule;
+import org.biokoframework.system.services.random.RandomModule;
 import org.biokoframework.systema.factory.SystemACommands;
-import org.biokoframework.systema.factory.SystemAContextFactory;
 
-import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import com.google.inject.name.Names;
 
-public class SystemAMainModule extends AbstractModule {
+/**
+ * 
+ * @author Mikol Faro <mikol.faro@gmail.com>
+ * @date Feb 13, 2014
+ *
+ */
+public class SystemAMainModule extends SystemMainModule {
+
+	private final ConfigurationEnum fConfig;
+	
+	public SystemAMainModule(ConfigurationEnum config) {
+		fConfig = config;
+		
+	}
 
 	@Override
-	public void configure() {
+	protected void configureMain() {
+		
+		bind(ConfigurationEnum.class).toInstance(fConfig);
+
+		bind(IHandlerLocator.class)
+			.to(AnnotationHandlerLocator.class);
+		
 		bind(new TypeLiteral<Class<?>>(){})
 			.annotatedWith(Names.named("Commands"))
 			.toInstance(SystemACommands.class);
 		
-		bind(ContextFactory.class)
-			.to(SystemAContextFactory.class);
-		
-		bind(XServerSingleton.class)
-			.asEagerSingleton();
-		
+	}
+
+	@Override
+	protected void configureProperties() {
+		bindProperty("cronEmailAddress").to("cron@engaged.it");
+		bindProperty("noReplyEmailAddress").to("no-reply@engaged.it");
 	}
 	
+	@Override
+	protected void configureOtherModules() {
+		install(new CurrentTimeModule(fConfig));
+		install(new RandomModule(fConfig));
+		install(new RandomModule(fConfig));
+		install(new CronModule(fConfig));
+		install(new EmailModule(fConfig));
+		install(new QueueModule(fConfig));
+		install(new SystemAMemRepoModule());
+		
+		install(new RouteParserModule());
+		install(new ExceptionResponseModule());
+		
+	}
+
 }

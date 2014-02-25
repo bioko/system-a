@@ -37,6 +37,7 @@ import org.biokoframework.system.entity.template.TemplateBuilder;
 import org.biokoframework.system.factory.binary.BinaryEntityRepositoryFactory;
 import org.biokoframework.system.repository.memory.InMemoryRepository;
 import org.biokoframework.system.services.RepositoryModule;
+import org.biokoframework.system.services.queue.QueuedItem;
 import org.biokoframework.systema.entity.dummy1.DummyEntity1;
 import org.biokoframework.systema.entity.dummy2.DummyEntity2;
 import org.biokoframework.systema.entity.dummy3.DummyEntity3;
@@ -44,10 +45,7 @@ import org.biokoframework.systema.entity.dummy6.DummyEntity6;
 import org.biokoframework.systema.entity.dummyComplex.DummyComplexDomainEntity;
 import org.biokoframework.systema.entity.dummyWithInteger.DummyEntityWithInteger;
 import org.biokoframework.utils.exception.ValidationException;
-import org.biokoframework.utils.repository.Repository;
 import org.biokoframework.utils.repository.RepositoryException;
-
-import com.google.inject.TypeLiteral;
 
 /**
  * 
@@ -59,39 +57,42 @@ public class SystemAMemRepoModule extends RepositoryModule {
 
 	@Override
 	protected void configureRepositories() throws RepositoryException {
-		bind(new TypeLiteral<Repository<Login>>(){}).
-		toInstance(new InMemoryRepository<>(Login.class));
+		bindEntity(Login.class)
+			.toInstance(new InMemoryRepository<>(Login.class));
 		
-		bind(new TypeLiteral<Repository<Authentication>>(){}).
-		toInstance(new InMemoryRepository<>(Authentication.class));
+		bindEntity(Authentication.class)
+			.toInstance(new InMemoryRepository<>(Authentication.class));
 		
-		bind(new TypeLiteral<Repository<PasswordReset>>(){}).
-		toInstance(new InMemoryRepository<>(PasswordReset.class));
+		bindEntity(PasswordReset.class)
+			.toInstance(new InMemoryRepository<>(PasswordReset.class));
 		
-		bind(new TypeLiteral<Repository<EmailConfirmation>>(){}).
-		toInstance(new InMemoryRepository<>(EmailConfirmation.class));
+		bindEntity(EmailConfirmation.class)
+			.toInstance(new InMemoryRepository<>(EmailConfirmation.class));
 		
-		bind(new TypeLiteral<Repository<DummyEntity1>>(){}).
-		toInstance(new InMemoryRepository<>(DummyEntity1.class));
+		bindEntity(DummyEntity1.class)
+			.toInstance(new InMemoryRepository<>(DummyEntity1.class));
 		
-		bind(new TypeLiteral<Repository<DummyEntity2>>(){}).
-		toInstance(new InMemoryRepository<>(DummyEntity2.class));
+		bindEntity(DummyEntity2.class)
+			.toInstance(new InMemoryRepository<>(DummyEntity2.class));
 		
-		bind(new TypeLiteral<Repository<DummyEntity3>>(){}).
-		toInstance(new InMemoryRepository<>(DummyEntity3.class));
+		bindEntity(DummyEntity3.class)
+			.toInstance(new InMemoryRepository<>(DummyEntity3.class));
 		
-		bind(new TypeLiteral<Repository<DummyEntity6>>(){}).
-		toInstance(new InMemoryRepository<>(DummyEntity6.class));
+		bindEntity(DummyEntity6.class)
+			.toInstance(new InMemoryRepository<>(DummyEntity6.class));
 		
-		bind(new TypeLiteral<Repository<DummyComplexDomainEntity>>(){}).
-		toInstance(new InMemoryRepository<>(DummyComplexDomainEntity.class));
+		bindEntity(DummyComplexDomainEntity.class)
+			.toInstance(new InMemoryRepository<>(DummyComplexDomainEntity.class));
 		
-		bind(new TypeLiteral<Repository<DummyEntityWithInteger>>(){}).
-		toInstance(new InMemoryRepository<>(DummyEntityWithInteger.class));
+		bindEntity(DummyEntityWithInteger.class)
+			.toInstance(new InMemoryRepository<>(DummyEntityWithInteger.class));
 		
-		bind(new TypeLiteral<Repository<BinaryEntity>>(){}).
-		toInstance(BinaryEntityRepositoryFactory.createForTemp("system-a", 
+		bindEntity(BinaryEntity.class)
+			.toInstance(BinaryEntityRepositoryFactory.createForTemp("system-a", 
 				new InMemoryRepository<>(BinaryEntity.class)));
+		
+		bindEntity(QueuedItem.class)
+			.toInstance(new InMemoryRepository<>(QueuedItem.class));
 		
 //		bind(new TypeLiteral<BinaryEntityRepository>(){}).
 //		annotatedWith(Names.named(SystemARepositories.BLOB_REPO_FOR_MULTIPART)).
@@ -100,8 +101,9 @@ public class SystemAMemRepoModule extends RepositoryModule {
 		
 		InMemoryRepository<Template> templateRepo = new InMemoryRepository<>(Template.class);
 		prepareTemplates(templateRepo);
-		bind(new TypeLiteral<Repository<Template>>(){}).
-		toInstance(templateRepo);
+		
+		bindEntity(Template.class)
+			.toInstance(templateRepo);
 		
 	}
 
