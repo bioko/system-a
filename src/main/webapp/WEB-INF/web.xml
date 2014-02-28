@@ -15,7 +15,7 @@
 	</filter-mapping>
 
 	<listener>
-		<listener-class>it.bioko.systema.injection.SystemAServletConfig</listener-class>
+		<listener-class>org.biokoframework.systema.injection.SystemAServletConfig</listener-class>
 	</listener>
 
 	<!-- <servlet>
