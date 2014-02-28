@@ -30,6 +30,7 @@ package org.biokoframework.systema.injection;
 import org.biokoframework.http.exception.ExceptionResponseModule;
 import org.biokoframework.http.handler.IHandlerLocator;
 import org.biokoframework.http.handler.annotation.AnnotationHandlerLocator;
+import org.biokoframework.http.response.ResponseBuilderModule;
 import org.biokoframework.http.routing.RouteParserModule;
 import org.biokoframework.system.ConfigurationEnum;
 import org.biokoframework.system.SystemMainModule;
@@ -88,6 +89,7 @@ public class SystemAMainModule extends SystemMainModule {
 		install(new QueueModule(fConfig));
 		install(new SystemAMemRepoModule());
 		
+		install(new ResponseBuilderModule());
 		install(new RouteParserModule());
 		install(new ExceptionResponseModule());
 		

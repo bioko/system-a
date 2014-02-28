@@ -52,7 +52,6 @@ public class SystemAServletConfig extends GuiceServletContextListener {
 	protected Injector getInjector() {	
 		Injector injector = Guice.createInjector(
 				new SystemAMainModule(fConfig),
-				
 				new ServletModule() {
 					@Override
 					protected void configureServlets() {
