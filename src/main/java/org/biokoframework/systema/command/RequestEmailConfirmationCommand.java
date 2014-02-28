@@ -83,7 +83,7 @@ public class RequestEmailConfirmationCommand extends AbstractCommand {
 		confirmation.set(EmailConfirmation.LOGIN_ID, login.getId());
 		confirmation.set(EmailConfirmation.TOKEN, token);
 		confirmation.set(EmailConfirmation.CONFIRMED, false);
-		SafeRepositoryHelper.save(confirmationRepo, confirmation, fContext);
+		SafeRepositoryHelper.save(confirmationRepo, confirmation);
 		
 		// TODO extract template
 		String mailContent = new StringBuilder().

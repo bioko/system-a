@@ -27,32 +27,23 @@
 
 package org.biokoframework.systema.command;
 
-import org.apache.log4j.Logger;
 import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
-import org.biokoframework.system.context.Context;
 import org.biokoframework.systema.misc.Dummy1Mock;
 import org.biokoframework.utils.fields.Fields;
 
 public class CronExampleCommand extends AbstractCommand {
 
-	public CronExampleCommand(Context context) {
-		fContext = context;
-	}
-	
 	public CronExampleCommand() {		
 	}
 
 	@Override
 	public Fields execute(Fields input) throws CommandException {
-		Logger logger = fContext.get(Context.LOGGER);
-		logger.info("EXECUTING Command: " + this.getClass().getSimpleName());
-		logger.info("INPUT: " + input.toString());
-
+		logInput(input);
+		
 		Dummy1Mock.setShape(Dummy1Mock.QUADRATO);
 		
-		logger.info("OUTPUT after execution: no output");
-		logger.info("END Command: " + this.getClass().getSimpleName());
+		logOutput();
 		return new Fields();
 	}
 

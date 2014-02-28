@@ -53,7 +53,7 @@ public class ValidatedCommand extends AbstractCommand{
 		Repository<DummyEntity1> dummy1Repo = getRepository(DummyEntity1.class);
 		DummyEntity1 dummy1 = new DummyEntity1(new Fields());
 		dummy1.set(DummyEntity1.VALUE, input.get(TEXT_MANDATORY_FIELD));
-		dummy1 = SafeRepositoryHelper.save(dummy1Repo, dummy1, fContext);
+		dummy1 = SafeRepositoryHelper.save(dummy1Repo, dummy1);
 
 		// save integer optional field into dummy2
 		Long integerFieldValue = input.get(INTEGER_OPTIONAL_FIELD); 
@@ -62,7 +62,7 @@ public class ValidatedCommand extends AbstractCommand{
 			DummyEntity2 dummy2 = new DummyEntity2(new Fields());
 			dummy2.set(DummyEntity2.VALUE, input.get(INTEGER_OPTIONAL_FIELD));
 			dummy2.set(DummyEntity2.ENTITY1_ID, dummy1.getId());
-			dummy2 = SafeRepositoryHelper.save(dummy2Repo, dummy2, fContext);
+			dummy2 = SafeRepositoryHelper.save(dummy2Repo, dummy2);
 		}
 
 		logOutput();

@@ -67,13 +67,13 @@ public class MultipartCommand extends AbstractCommand {
 		DummyMultipart dummy = new DummyMultipart(input);
 		
 		// save blobs int its repo
-		SafeRepositoryHelper.save(blobRepo, firstFile, fContext);
-		SafeRepositoryHelper.save(blobRepo, secondFile, fContext);
+		SafeRepositoryHelper.save(blobRepo, firstFile);
+		SafeRepositoryHelper.save(blobRepo, secondFile);
 		
 		dummy.set(DummyMultipart.FIRST_FILE_ID, firstFile.getId());
 		dummy.set(DummyMultipart.SECOND_FILE_ID, secondFile.getId());
 		
-		SafeRepositoryHelper.save(dummyMPRepo, dummy, fContext);
+		SafeRepositoryHelper.save(dummyMPRepo, dummy);
 		
 		logOutput();
 		return new Fields(GenericFieldNames.RESPONSE, Arrays.asList(dummy));
