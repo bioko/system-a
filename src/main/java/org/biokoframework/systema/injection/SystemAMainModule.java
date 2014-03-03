@@ -41,9 +41,6 @@ import org.biokoframework.system.services.queue.QueueModule;
 import org.biokoframework.system.services.random.RandomModule;
 import org.biokoframework.systema.factory.SystemACommands;
 
-import com.google.inject.TypeLiteral;
-import com.google.inject.name.Names;
-
 /**
  * 
  * @author Mikol Faro <mikol.faro@gmail.com>
@@ -61,15 +58,14 @@ public class SystemAMainModule extends SystemMainModule {
 
 	@Override
 	protected void configureMain() {
+		bindProperty("systemName").to("system-a");
+		bindProperty("systemVersion").to("system-a");
 		
+		bindProperty("Commands").to(SystemACommands.class);
+	
 		bind(ConfigurationEnum.class).toInstance(fConfig);
 
-		bind(IHandlerLocator.class)
-			.to(AnnotationHandlerLocator.class);
-		
-		bind(new TypeLiteral<Class<?>>(){})
-			.annotatedWith(Names.named("Commands"))
-			.toInstance(SystemACommands.class);
+		bind(IHandlerLocator.class).to(AnnotationHandlerLocator.class);
 		
 	}
 
