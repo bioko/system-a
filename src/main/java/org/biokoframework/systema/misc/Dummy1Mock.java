@@ -55,7 +55,7 @@ public class Dummy1Mock {
 		input.put(DomainEntity.ID,"1");
 		input.put(DummyEntity1.VALUE,"quadrato");
 		
-		return new DummyEntity1(input);
+		return new DummyEntity1();
 	}
 	
 	private static DummyEntity1 getTriangoloShape() {
@@ -63,7 +63,7 @@ public class Dummy1Mock {
 		input.put(DomainEntity.ID,"2");
 		input.put(DummyEntity1.VALUE,"triangolo");
 		
-		return new DummyEntity1(input);
+		return new DummyEntity1();
 	}
 	
 	

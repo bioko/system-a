@@ -29,7 +29,6 @@ package org.biokoframework.systema.entity.dummyWithInteger;
 
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.domain.annotation.field.Field;
-import org.biokoframework.utils.fields.Fields;
 
 public class DummyEntityWithInteger extends DomainEntity {
 
@@ -38,12 +37,4 @@ public class DummyEntityWithInteger extends DomainEntity {
 	@Field(type = Long.class)
 	public static final String VALUE = "value";
 	
-	
-	public DummyEntityWithInteger(Fields input) {
-		super(input);		
-	}
-
-	
-
-
 }

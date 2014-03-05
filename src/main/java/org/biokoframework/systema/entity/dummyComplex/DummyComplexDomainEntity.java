@@ -29,7 +29,6 @@ package org.biokoframework.systema.entity.dummyComplex;
 
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.domain.annotation.field.Field;
-import org.biokoframework.utils.fields.Fields;
 
 public class DummyComplexDomainEntity extends DomainEntity {
 
@@ -43,9 +42,5 @@ public class DummyComplexDomainEntity extends DomainEntity {
 	public static final String AN_INTEGER_OPTIONAL_FIELD = "anIntegerOptionalField";
 	@Field
 	public static final String A_STRING_FIELD_MANDATORY_ALSO_IN_GET = "aStringFieldMandatoryAlsoInGet";
-
-	public DummyComplexDomainEntity(Fields input) {
-		super(input);
-	}
 
 }

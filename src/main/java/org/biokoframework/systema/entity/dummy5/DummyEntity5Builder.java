@@ -48,6 +48,6 @@ public class DummyEntity5Builder extends EntityBuilder<DummyEntity5> {
 	}
 
 	public void setList(ArrayList<DummyEntity4> entityList) {
-		_currentFields.put(DummyEntity5.LIST, entityList);
+		fCurrentFields.put(DummyEntity5.LIST, entityList);
 	}
 }

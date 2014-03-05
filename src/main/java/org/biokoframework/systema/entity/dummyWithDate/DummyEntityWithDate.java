@@ -29,23 +29,16 @@ package org.biokoframework.systema.entity.dummyWithDate;
 
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.domain.annotation.field.Field;
-import org.biokoframework.utils.fields.Fields;
-import org.biokoframework.utils.validator.Validator;
+import org.biokoframework.utils.domain.annotation.hint.Hint;
 import org.joda.time.DateTime;
 
 public class DummyEntityWithDate extends DomainEntity {
 
 	private static final long serialVersionUID = -2989408276331032151L;
 	
-	@Field(type=DateTime.class, dateFormat=Validator.ISO_TIMESTAMP)
+	@Field(type=DateTime.class, hints = {
+		@Hint(name = "validationLocaldateFormat", value = "yyyy/MM/dd'T'hh:mm:ssZ")
+	})
 	public static final String VALUE = "value";
-	
-	
-	public DummyEntityWithDate(Fields input) {
-		super(input);		
-	}
-
-	
-
 
 }

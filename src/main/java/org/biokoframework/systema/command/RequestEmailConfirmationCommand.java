@@ -70,7 +70,7 @@ public class RequestEmailConfirmationCommand extends AbstractCommand {
 		Repository<Login> loginRepo = getRepository(Login.class);
 		Repository<EmailConfirmation> confirmationRepo = getRepository(EmailConfirmation.class);
 
-		EmailConfirmation confirmation = new EmailConfirmation(new Fields());
+		EmailConfirmation confirmation = new EmailConfirmation();
 		
 		String userEmail = input.get(Login.USER_EMAIL);
 		Login login = loginRepo.retrieveByForeignKey(Login.USER_EMAIL, userEmail);

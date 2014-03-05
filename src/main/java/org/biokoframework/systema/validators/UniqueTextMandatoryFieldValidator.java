@@ -38,7 +38,6 @@ import org.biokoframework.systema.entity.dummy1.DummyEntity1;
 import org.biokoframework.utils.domain.ErrorEntity;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;
-import org.biokoframework.utils.validator.ValidatorErrorBuilder;
 
 public class UniqueTextMandatoryFieldValidator extends AbstractValidator {
 
@@ -49,8 +48,8 @@ public class UniqueTextMandatoryFieldValidator extends AbstractValidator {
 		String valueToTest = input.get(ValidatedCommand.TEXT_MANDATORY_FIELD);
 		List<DummyEntity1> result = dummy1Repo.getEntitiesByForeignKey(DummyEntity1.VALUE, valueToTest);
 		
-		if (!result.isEmpty())
-			errors.add(ValidatorErrorBuilder.buildUniqueViolationError(ValidatedCommand.TEXT_MANDATORY_FIELD));
+//		if (!result.isEmpty())
+//			errors.add(ValidatorErrorBuilder.buildUniqueViolationError(ValidatedCommand.TEXT_MANDATORY_FIELD));
 		
 		
 	}

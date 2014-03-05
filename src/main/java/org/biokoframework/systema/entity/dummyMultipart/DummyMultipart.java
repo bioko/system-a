@@ -29,7 +29,6 @@ package org.biokoframework.systema.entity.dummyMultipart;
 
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.domain.annotation.field.Field;
-import org.biokoframework.utils.fields.Fields;
 
 public class DummyMultipart extends DomainEntity {
 
@@ -44,11 +43,4 @@ public class DummyMultipart extends DomainEntity {
 	@Field
 	public static final String		SECOND_FILE_ID		=	"secondFileId";
 	
-	
-	public DummyMultipart(Fields input) {
-		super(input);		
-	}
-	
-	
-
 }

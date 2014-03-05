@@ -36,7 +36,7 @@ import org.biokoframework.systema.entity.dummy2.DummyEntity2;
 import org.biokoframework.utils.domain.ErrorEntity;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;
-import org.biokoframework.utils.validator.ValidatorErrorBuilder;
+import org.biokoframework.utils.validation.ValidationErrorBuilder;
 
 public class UniqueOptionalIntegerValidator extends AbstractValidator {
 
@@ -48,7 +48,7 @@ public class UniqueOptionalIntegerValidator extends AbstractValidator {
 		List<DummyEntity2> result = dummy2Repo.getEntitiesByForeignKey(DummyEntity2.VALUE, valueToTest);
 		
 		if (!result.isEmpty())
-			errors.add(ValidatorErrorBuilder.buildUniqueViolationError(ValidatedCommand.INTEGER_OPTIONAL_FIELD));
+			errors.add(ValidationErrorBuilder.buildUniqueViolationError(ValidatedCommand.INTEGER_OPTIONAL_FIELD));
 		
 	}
 

@@ -59,7 +59,7 @@ public class SystemAMainModule extends SystemMainModule {
 	@Override
 	protected void configureMain() {
 		bindProperty("systemName").to("system-a");
-		bindProperty("systemVersion").to("system-a");
+		bindProperty("systemVersion").to("1.0");
 		
 		bindProperty("Commands").to(SystemACommands.class);
 	
@@ -78,7 +78,6 @@ public class SystemAMainModule extends SystemMainModule {
 	@Override
 	protected void configureOtherModules() {
 		install(new CurrentTimeModule(fConfig));
-		install(new RandomModule(fConfig));
 		install(new RandomModule(fConfig));
 		install(new CronModule(fConfig));
 		install(new EmailModule(fConfig));

@@ -30,7 +30,6 @@ package org.biokoframework.systema.entity.dummy3;
 import org.biokoframework.systema.entity.dummy2.DummyEntity2;
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.domain.annotation.field.Field;
-import org.biokoframework.utils.fields.Fields;
 
 public class DummyEntity3 extends DomainEntity {
 
@@ -43,9 +42,5 @@ public class DummyEntity3 extends DomainEntity {
 	
 	@Field
 	public static final String VALUE = "value";
-
-	public DummyEntity3(Fields input) {
-		super(input);
-	}
 
 }

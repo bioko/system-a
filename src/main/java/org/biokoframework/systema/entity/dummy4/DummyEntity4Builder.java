@@ -48,7 +48,7 @@ public class DummyEntity4Builder extends EntityBuilder<DummyEntity4> {
 	}
 
 	public void setEntity1(ArrayList<String> references) {
-		_currentFields.put(DummyEntity4.ENTITY1_ID, references);
+		fCurrentFields.put(DummyEntity4.ENTITY1_ID, references);
 	}
 
 }

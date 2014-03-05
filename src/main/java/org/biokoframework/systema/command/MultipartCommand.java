@@ -64,7 +64,8 @@ public class MultipartCommand extends AbstractCommand {
 		BinaryEntity firstFile = input.get(FIRST_FILE_PART_NAME);
 		BinaryEntity secondFile = input.get(SECOND_FILE_PART_NAME);
 		
-		DummyMultipart dummy = new DummyMultipart(input);
+		DummyMultipart dummy = new DummyMultipart();
+		dummy.setAll(input);
 		
 		// save blobs int its repo
 		SafeRepositoryHelper.save(blobRepo, firstFile);
