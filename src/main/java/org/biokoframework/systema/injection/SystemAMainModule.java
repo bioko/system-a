@@ -37,9 +37,11 @@ import org.biokoframework.system.SystemMainModule;
 import org.biokoframework.system.services.cron.CronModule;
 import org.biokoframework.system.services.currenttime.CurrentTimeModule;
 import org.biokoframework.system.services.email.EmailModule;
+import org.biokoframework.system.services.entity.EntityModule;
 import org.biokoframework.system.services.queue.QueueModule;
 import org.biokoframework.system.services.random.RandomModule;
 import org.biokoframework.systema.factory.SystemACommands;
+import org.biokoframework.utils.validation.ValidationModule;
 
 /**
  * 
@@ -77,12 +79,15 @@ public class SystemAMainModule extends SystemMainModule {
 	
 	@Override
 	protected void configureOtherModules() {
+		install(new EntityModule());
+		install(new SystemAMemRepoModule(fConfig));
+
 		install(new CurrentTimeModule(fConfig));
 		install(new RandomModule(fConfig));
 		install(new CronModule(fConfig));
 		install(new EmailModule(fConfig));
 		install(new QueueModule(fConfig));
-		install(new SystemAMemRepoModule());
+		install(new ValidationModule());
 		
 		install(new ResponseBuilderModule());
 		install(new RouteParserModule());

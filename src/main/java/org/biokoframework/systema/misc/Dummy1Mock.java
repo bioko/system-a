@@ -36,17 +36,17 @@ public class Dummy1Mock {
 	public static final String QUADRATO = "quadrato";
 	public static final String TRIANGOLO = "triangolo";
 	
-	private static DummyEntity1 _currentShape = null;
+	private static DummyEntity1 fCurrentShape = null;
 
 	public static DomainEntity getShape() {
-		return _currentShape;
+		return fCurrentShape;
 	}
 
 	public static void setShape(String shape) {
 		if (shape.equals(QUADRATO))
-			_currentShape = getQuadratoShape();
+			fCurrentShape = getQuadratoShape();
 		else if (shape.equals(TRIANGOLO))
-			_currentShape = getTriangoloShape();
+			fCurrentShape = getTriangoloShape();
 		
 	}
 
@@ -55,7 +55,9 @@ public class Dummy1Mock {
 		input.put(DomainEntity.ID,"1");
 		input.put(DummyEntity1.VALUE,"quadrato");
 		
-		return new DummyEntity1();
+		DummyEntity1 entity = new DummyEntity1();
+		entity.setAll(input);
+		return entity;
 	}
 	
 	private static DummyEntity1 getTriangoloShape() {
@@ -63,7 +65,9 @@ public class Dummy1Mock {
 		input.put(DomainEntity.ID,"2");
 		input.put(DummyEntity1.VALUE,"triangolo");
 		
-		return new DummyEntity1();
+		DummyEntity1 entity = new DummyEntity1();
+		entity.setAll(input);
+		return entity;
 	}
 	
 	

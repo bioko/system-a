@@ -27,25 +27,15 @@
 
 package org.biokoframework.systema.injection;
 
-import org.biokoframework.system.entity.authentication.Authentication;
-import org.biokoframework.system.entity.authentication.EmailConfirmation;
-import org.biokoframework.system.entity.authentication.PasswordReset;
-import org.biokoframework.system.entity.binary.BinaryEntity;
-import org.biokoframework.system.entity.login.Login;
-import org.biokoframework.system.entity.template.Template;
-import org.biokoframework.system.entity.template.TemplateBuilder;
-import org.biokoframework.system.factory.binary.BinaryEntityRepositoryFactory;
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
+import org.biokoframework.system.ConfigurationEnum;
 import org.biokoframework.system.repository.memory.InMemoryRepository;
-import org.biokoframework.system.services.RepositoryModule;
-import org.biokoframework.system.services.queue.QueuedItem;
-import org.biokoframework.systema.entity.dummy1.DummyEntity1;
-import org.biokoframework.systema.entity.dummy2.DummyEntity2;
-import org.biokoframework.systema.entity.dummy3.DummyEntity3;
-import org.biokoframework.systema.entity.dummy6.DummyEntity6;
-import org.biokoframework.systema.entity.dummyComplex.DummyComplexDomainEntity;
-import org.biokoframework.systema.entity.dummyWithInteger.DummyEntityWithInteger;
-import org.biokoframework.utils.exception.ValidationException;
-import org.biokoframework.utils.repository.RepositoryException;
+import org.biokoframework.system.repository.sql.SqlRepository;
+import org.biokoframework.system.services.repository.RepositoryModule;
+
+import com.google.inject.name.Names;
 
 /**
  * 
@@ -55,64 +45,45 @@ import org.biokoframework.utils.repository.RepositoryException;
  */
 public class SystemAMemRepoModule extends RepositoryModule {
 
+	public SystemAMemRepoModule(ConfigurationEnum config) {
+		super(config);
+	}
+
 	@Override
-	protected void configureRepositories() throws RepositoryException {
-		bindEntity(Login.class)
-			.toInstance(new InMemoryRepository<>(Login.class));
+	protected void configureForDev() {
+		bind(File.class).annotatedWith(Names.named("fileBaseDirectory")).toInstance(FileUtils.getTempDirectory());
 		
-		bindEntity(Authentication.class)
-			.toInstance(new InMemoryRepository<>(Authentication.class));
+		bindRepositoryTo(InMemoryRepository.class);
+	}
+	
+	@Override
+	protected void configureForDemo() {
 		
-		bindEntity(PasswordReset.class)
-			.toInstance(new InMemoryRepository<>(PasswordReset.class));
+		bind(File.class).annotatedWith(Names.named("fileBaseDirectory")).toInstance(FileUtils.getTempDirectory());
 		
-		bindEntity(EmailConfirmation.class)
-			.toInstance(new InMemoryRepository<>(EmailConfirmation.class));
-		
-		bindEntity(DummyEntity1.class)
-			.toInstance(new InMemoryRepository<>(DummyEntity1.class));
-		
-		bindEntity(DummyEntity2.class)
-			.toInstance(new InMemoryRepository<>(DummyEntity2.class));
-		
-		bindEntity(DummyEntity3.class)
-			.toInstance(new InMemoryRepository<>(DummyEntity3.class));
-		
-		bindEntity(DummyEntity6.class)
-			.toInstance(new InMemoryRepository<>(DummyEntity6.class));
-		
-		bindEntity(DummyComplexDomainEntity.class)
-			.toInstance(new InMemoryRepository<>(DummyComplexDomainEntity.class));
-		
-		bindEntity(DummyEntityWithInteger.class)
-			.toInstance(new InMemoryRepository<>(DummyEntityWithInteger.class));
-		
-		bindEntity(BinaryEntity.class)
-			.toInstance(BinaryEntityRepositoryFactory.createForTemp("system-a", 
-				new InMemoryRepository<>(BinaryEntity.class)));
-		
-		bindEntity(QueuedItem.class)
-			.toInstance(new InMemoryRepository<>(QueuedItem.class));
-		
+		bindRepositoryTo(SqlRepository.class);
+	}
+	
+	@Override
+	protected void configureForProd() {
+		configureForDemo();
+	}
+	
 //		bind(new TypeLiteral<BinaryEntityRepository>(){}).
 //		annotatedWith(Names.named(SystemARepositories.BLOB_REPO_FOR_MULTIPART)).
 //		toInstance(BinaryEntityRepositoryFactory.createForTemp("system-a", 
 //				new InMemoryRepository<>(BinaryEntity.class)));
-		
-		InMemoryRepository<Template> templateRepo = new InMemoryRepository<>(Template.class);
-		prepareTemplates(templateRepo);
-		
-		bindEntity(Template.class)
-			.toInstance(templateRepo);
-		
-	}
-
-	private void prepareTemplates(InMemoryRepository<Template> templateRepo) throws RepositoryException {
-		try {
-			templateRepo.save(new TemplateBuilder().loadExample(TemplateBuilder.SYSTEM_A_TEMPLATE).build(false));
-		} catch (ValidationException exception) {
-			addError(exception);
-		}
-	}
+//
+//		InMemoryRepository<Template> templateRepo = new InMemoryRepository<>(Template.class);
+//		prepareTemplates(templateRepo);
+//		
+//		
+//	private void prepareTemplates(InMemoryRepository<Template> templateRepo) throws RepositoryException {
+//		try {
+//			templateRepo.save(new TemplateBuilder().loadExample(TemplateBuilder.SYSTEM_A_TEMPLATE).build(false));
+//		} catch (ValidationException exception) {
+//			addError(exception);
+//		}
+//	}
 
 }

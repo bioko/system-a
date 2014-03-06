@@ -27,7 +27,11 @@
 
 package org.biokoframework.systema.entity.dummyWithDate;
 
+import javax.inject.Inject;
+
 import org.biokoframework.utils.domain.EntityBuilder;
+
+import com.google.inject.Injector;
 
 public class DummyEntityWithDateBuilder extends EntityBuilder<DummyEntityWithDate> {
 
@@ -37,10 +41,9 @@ public class DummyEntityWithDateBuilder extends EntityBuilder<DummyEntityWithDat
 	public static final String EXAMPLE4 = "example4";
 	public static final String EXAMPLE5 = "example5";
 	
-	
-
-	public DummyEntityWithDateBuilder() {
-		super(DummyEntityWithDate.class);
+	@Inject
+	public DummyEntityWithDateBuilder(Injector injector) {
+		super(DummyEntityWithDate.class, injector);
 		
 		putExample(EXAMPLE1, "{ 'id':'1', 'value':'2013-11-20T10:00:00+0100' } ");
 		putExample(EXAMPLE2, "{ 'id':'2', 'value':'2013-11-20T10:05:00+0100' } ");

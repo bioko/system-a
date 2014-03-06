@@ -27,16 +27,25 @@
 
 package org.biokoframework.systema.entity.dummy2;
 
+import javax.inject.Inject;
+
 import org.biokoframework.utils.domain.EntityBuilder;
+
+import com.google.inject.Injector;
 
 public class DummyEntity2Builder extends EntityBuilder<DummyEntity2> {
 
 	private static final String EXAMPLE1 = "example1";
 	
-	public DummyEntity2Builder() {
-		super(DummyEntity2.class);
+	@Inject
+	public DummyEntity2Builder(Injector injector) {
+		super(DummyEntity2.class, injector);
 
 		putExample(EXAMPLE1, "{'id':'1','dummyEntity1Id':'1','value':314}");
+	}
+
+	public DummyEntity2Builder() {
+		this(null);
 	}
 
 	@Override

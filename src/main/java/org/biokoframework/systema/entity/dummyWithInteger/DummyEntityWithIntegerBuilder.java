@@ -27,7 +27,11 @@
 
 package org.biokoframework.systema.entity.dummyWithInteger;
 
+import javax.inject.Inject;
+
 import org.biokoframework.utils.domain.EntityBuilder;
+
+import com.google.inject.Injector;
 
 public class DummyEntityWithIntegerBuilder extends EntityBuilder<DummyEntityWithInteger> {
 
@@ -37,10 +41,9 @@ public class DummyEntityWithIntegerBuilder extends EntityBuilder<DummyEntityWith
 	public static final String EXAMPLE4 = "example4";
 	public static final String EXAMPLE5 = "example5";
 	
-	
-
-	public DummyEntityWithIntegerBuilder() {
-		super(DummyEntityWithInteger.class);
+	@Inject
+	public DummyEntityWithIntegerBuilder(Injector injector) {
+		super(DummyEntityWithInteger.class, injector);
 		
 		putExample(EXAMPLE1, "{ 'id':'1', 'value':1 } ");
 		putExample(EXAMPLE2, "{ 'id':'2', 'value':2 } ");
