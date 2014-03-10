@@ -27,6 +27,9 @@
 
 package org.biokoframework.systema.injection;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.biokoframework.http.exception.ExceptionResponseModule;
 import org.biokoframework.http.handler.IHandlerLocator;
 import org.biokoframework.http.handler.annotation.AnnotationHandlerLocator;
@@ -34,6 +37,7 @@ import org.biokoframework.http.response.ResponseBuilderModule;
 import org.biokoframework.http.routing.RouteParserModule;
 import org.biokoframework.system.ConfigurationEnum;
 import org.biokoframework.system.SystemMainModule;
+import org.biokoframework.system.services.authentication.AuthenticationModule;
 import org.biokoframework.system.services.cron.CronModule;
 import org.biokoframework.system.services.currenttime.CurrentTimeModule;
 import org.biokoframework.system.services.email.EmailModule;
@@ -42,6 +46,9 @@ import org.biokoframework.system.services.queue.QueueModule;
 import org.biokoframework.system.services.random.RandomModule;
 import org.biokoframework.systema.factory.SystemACommands;
 import org.biokoframework.utils.validation.ValidationModule;
+
+import com.google.inject.TypeLiteral;
+import com.google.inject.name.Names;
 
 /**
  * 
@@ -64,6 +71,12 @@ public class SystemAMainModule extends SystemMainModule {
 		bindProperty("systemVersion").to("1.0");
 		
 		bindProperty("Commands").to(SystemACommands.class);
+		
+		HashMap<String, String> map = new HashMap<>();
+		map.put("Engaged-Auth-Token", "authToken");
+		map.put("Engaged-Auth-Token-Expire", "authTokenExpire");
+		bind(new TypeLiteral<Map<String, String>>(){}).annotatedWith(Names.named("httpHeaderToFieldsMap"))
+			.toInstance(map);
 	
 		bind(ConfigurationEnum.class).toInstance(fConfig);
 
@@ -75,6 +88,7 @@ public class SystemAMainModule extends SystemMainModule {
 	protected void configureProperties() {
 		bindProperty("cronEmailAddress").to("cron@engaged.it");
 		bindProperty("noReplyEmailAddress").to("no-reply@engaged.it");
+		bindProperty("tokenValiditySecs").to(900L);
 	}
 	
 	@Override
@@ -84,6 +98,7 @@ public class SystemAMainModule extends SystemMainModule {
 
 		install(new CurrentTimeModule(fConfig));
 		install(new RandomModule(fConfig));
+		install(new AuthenticationModule(fConfig));
 		install(new CronModule(fConfig));
 		install(new EmailModule(fConfig));
 		install(new QueueModule(fConfig));
