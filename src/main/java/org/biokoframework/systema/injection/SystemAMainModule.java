@@ -27,9 +27,11 @@
 
 package org.biokoframework.systema.injection;
 
-import java.util.HashMap;
 import java.util.Map;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.google.common.collect.Maps;
 import org.biokoframework.http.exception.ExceptionResponseModule;
 import org.biokoframework.http.handler.IHandlerLocator;
 import org.biokoframework.http.handler.annotation.AnnotationHandlerLocator;
@@ -72,11 +74,12 @@ public class SystemAMainModule extends SystemMainModule {
 		
 		bindProperty("Commands").to(SystemACommands.class);
 		
-		HashMap<String, String> map = new HashMap<>();
-		map.put("Engaged-Auth-Token", "authToken");
-		map.put("Engaged-Auth-Token-Expire", "authTokenExpire");
-		bind(new TypeLiteral<Map<String, String>>(){}).annotatedWith(Names.named("httpHeaderToFieldsMap"))
-			.toInstance(map);
+		BiMap<String, String> headerToFieldMap = HashBiMap.create();
+        headerToFieldMap.put("Engaged-Auth-Token", "authToken");
+        headerToFieldMap.put("Engaged-Auth-Token-Expire", "authTokenExpire");
+        headerToFieldMap = Maps.unmodifiableBiMap(headerToFieldMap);
+		bind(new TypeLiteral<Map<String, String>>(){}).annotatedWith(Names.named("httpHeaderToFieldsMap")).toInstance(headerToFieldMap);
+        bind(new TypeLiteral<Map<String, String>>(){}).annotatedWith(Names.named("fieldsHttpHeaderToMap")).toInstance(headerToFieldMap.inverse());
 	
 		bind(ConfigurationEnum.class).toInstance(fConfig);
 

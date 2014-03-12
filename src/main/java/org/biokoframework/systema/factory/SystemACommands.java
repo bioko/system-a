@@ -252,10 +252,10 @@ public class SystemACommands {
 
 	@Auth
 	@Command(impl=PrintLoginIdCommand.class, rest=HttpMethod.POST)
-	public static final String CHECK_AUTH_LOGIN_ID_WITH_AUTH_ANNOITION = "check-auth-login-id-with-auth-annotation";
+	public static final String CHECK_AUTH_LOGIN_ID_WITH_AUTH_ANNOTATION = "check-auth-login-id-with-auth-annotation";
 
 	@Command(impl=PrintLoginIdCommand.class, rest=HttpMethod.POST)
-	public static final String CHECK_AUTH_LOGIN_ID_WITHOUT_AUTH_ANNOITION = "check-auth-login-id-without-auth-annotation";
+	public static final String CHECK_AUTH_LOGIN_ID_WITHOUT_AUTH_ANNOTATION = "check-auth-login-id-without-auth-annotation";
 
 
 	////////////////////////////////////////////////////////////////////////////////////////
