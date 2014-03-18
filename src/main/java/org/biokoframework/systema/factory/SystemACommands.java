@@ -83,6 +83,7 @@ public class SystemACommands {
 	@CrudCommand(entity = Authentication.class, repoName = SystemARepositories.AUTHENTICATION_REPOSITORY)
 	public static final String AUTHENTICATION = "authentication";
 
+    @Auth
 	@Command(impl=EngagedCheckInCommand.class, rest = HttpMethod.POST )
 	public static final String ENGAGED_CHECK_IN = GenericCommandNames.ENGAGED_CHECK_IN;
 	
