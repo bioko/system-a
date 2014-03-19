@@ -27,31 +27,28 @@
 
 package org.biokoframework.systema.injection;
 
-import javax.servlet.ServletContextEvent;
-
-import org.biokoframework.http.BiokoServlet;
-import org.biokoframework.system.ConfigurationEnum;
-
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
+import org.biokoframework.http.BiokoServlet;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
 
 public class SystemAServletConfig extends GuiceServletContextListener {
 
-	private ConfigurationEnum fConfig;
-	
-	public void contextInitialized(ServletContextEvent servletContextEvent) {
-		// fConfig = servletContextEvent.getServletContext().getAttribute("systemConfig");
-		fConfig = ConfigurationEnum.DEV;
-		
+    private ServletContext fContext;
+
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
+        fContext = servletContextEvent.getServletContext();
 		super.contextInitialized(servletContextEvent);
 	}
-	
+
 	@Override
 	protected Injector getInjector() {	
 		Injector injector = Guice.createInjector(
-				new SystemAMainModule(fConfig),
+				new SystemAMainModule(fContext),
 				new ServletModule() {
 					@Override
 					protected void configureServlets() {

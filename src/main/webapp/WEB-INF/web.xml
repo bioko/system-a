@@ -18,7 +18,8 @@
 		<listener-class>org.biokoframework.systema.injection.SystemAServletConfig</listener-class>
 	</listener>
 
-	<!-- <servlet>
+	<!--
+	<servlet>
 		<servlet-name>System A</servlet-name>
 		<servlet-class>it.bioko.http-exposer.BiokoServlet</servlet-class>
 		<init-param>

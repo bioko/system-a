@@ -37,8 +37,6 @@ import org.biokoframework.http.handler.IHandlerLocator;
 import org.biokoframework.http.handler.annotation.AnnotationHandlerLocator;
 import org.biokoframework.http.response.ResponseBuilderModule;
 import org.biokoframework.http.routing.RouteParserModule;
-import org.biokoframework.system.ConfigurationEnum;
-import org.biokoframework.system.SystemMainModule;
 import org.biokoframework.system.services.authentication.AuthenticationModule;
 import org.biokoframework.system.services.cron.CronModule;
 import org.biokoframework.system.services.currenttime.CurrentTimeModule;
@@ -52,22 +50,21 @@ import org.biokoframework.utils.validation.ValidationModule;
 import com.google.inject.TypeLiteral;
 import com.google.inject.name.Names;
 
+import javax.servlet.ServletContext;
+
 /**
  * 
  * @author Mikol Faro <mikol.faro@gmail.com>
  * @date Feb 13, 2014
  *
  */
-public class SystemAMainModule extends SystemMainModule {
+public class SystemAMainModule extends HttpSystemMainModule {
 
-	private final ConfigurationEnum fConfig;
-	
-	public SystemAMainModule(ConfigurationEnum config) {
-		fConfig = config;
-		
-	}
+    public SystemAMainModule(ServletContext context) {
+        super(context);
+    }
 
-	@Override
+    @Override
 	protected void configureMain() {
 		bindProperty("systemName").to("system-a");
 		bindProperty("systemVersion").to("1.0");
@@ -80,8 +77,6 @@ public class SystemAMainModule extends SystemMainModule {
         headerToFieldMap = Maps.unmodifiableBiMap(headerToFieldMap);
 		bind(new TypeLiteral<Map<String, String>>(){}).annotatedWith(Names.named("httpHeaderToFieldsMap")).toInstance(headerToFieldMap);
         bind(new TypeLiteral<Map<String, String>>(){}).annotatedWith(Names.named("fieldsHttpHeaderToMap")).toInstance(headerToFieldMap.inverse());
-	
-		bind(ConfigurationEnum.class).toInstance(fConfig);
 
 		bind(IHandlerLocator.class).to(AnnotationHandlerLocator.class);
 		
@@ -93,24 +88,23 @@ public class SystemAMainModule extends SystemMainModule {
 		bindProperty("noReplyEmailAddress").to("no-reply@engaged.it");
 		bindProperty("tokenValiditySecs").to(900L);
 	}
-	
-	@Override
-	protected void configureOtherModules() {
-		install(new EntityModule());
-		install(new SystemAMemRepoModule(fConfig));
 
-		install(new CurrentTimeModule(fConfig));
-		install(new RandomModule(fConfig));
-		install(new AuthenticationModule(fConfig));
-		install(new CronModule(fConfig));
-		install(new EmailModule(fConfig));
-		install(new QueueModule(fConfig));
-		install(new ValidationModule());
-		
-		install(new ResponseBuilderModule());
-		install(new RouteParserModule());
-		install(new ExceptionResponseModule());
-		
-	}
+    @Override
+    protected void configureOtherModules() {
+        install(new EntityModule());
+        install(new SystemAMemRepoModule(getConfig()));
 
+        install(new CurrentTimeModule(getConfig()));
+        install(new RandomModule(getConfig()));
+        install(new AuthenticationModule(getConfig()));
+        install(new CronModule(getConfig()));
+        install(new EmailModule(getConfig()));
+        install(new QueueModule(getConfig()));
+        install(new ValidationModule());
+
+        install(new ResponseBuilderModule());
+        install(new RouteParserModule());
+        install(new ExceptionResponseModule());
+
+    }
 }
