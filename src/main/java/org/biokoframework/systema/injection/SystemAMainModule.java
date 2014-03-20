@@ -61,10 +61,6 @@ import javax.servlet.ServletContext;
  */
 public class SystemAMainModule extends HttpSystemMainModule {
 
-    public SystemAMainModule(ServletContext context) {
-        super(context);
-    }
-
     @Override
 	protected void configureMain() {
 		bindProperty("systemName").to("system-a");

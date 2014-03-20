@@ -40,7 +40,16 @@
 				<version>2.4</version>
 				<configuration>
 					<attachClasses>true</attachClasses>
-				</configuration>
+                    <webResources>
+                        <resource>
+                            <directory>${basedir}/src/main/resources</directory>
+                            <targetPath>/</targetPath>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                </configuration>
 			</plugin>
                         <plugin>
 				<groupId>org.jacoco</groupId>

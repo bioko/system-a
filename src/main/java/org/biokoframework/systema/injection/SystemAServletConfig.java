@@ -35,20 +35,18 @@ import org.biokoframework.http.BiokoServlet;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
+import java.net.URL;
 
 public class SystemAServletConfig extends GuiceServletContextListener {
 
-    private ServletContext fContext;
-
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        fContext = servletContextEvent.getServletContext();
 		super.contextInitialized(servletContextEvent);
 	}
 
 	@Override
-	protected Injector getInjector() {	
+	protected Injector getInjector() {
 		Injector injector = Guice.createInjector(
-				new SystemAMainModule(fContext),
+				new SystemAMainModule(),
 				new ServletModule() {
 					@Override
 					protected void configureServlets() {
