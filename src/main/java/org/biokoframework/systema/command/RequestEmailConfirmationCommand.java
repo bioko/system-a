@@ -27,8 +27,8 @@
 
 package org.biokoframework.systema.command;
 
-import java.util.ArrayList;
-
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
 import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
@@ -43,8 +43,7 @@ import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;
 
-import com.google.inject.Inject;
-import com.google.inject.name.Named;
+import java.util.ArrayList;
 
 public class RequestEmailConfirmationCommand extends AbstractCommand {
 

@@ -28,9 +28,6 @@
 package org.biokoframework.systema.validators;
 
 
-
-import java.util.List;
-
 import org.biokoframework.system.service.validation.AbstractValidator;
 import org.biokoframework.systema.command.ValidatedCommand;
 import org.biokoframework.systema.commons.SystemARepositories;
@@ -38,6 +35,8 @@ import org.biokoframework.systema.entity.dummy1.DummyEntity1;
 import org.biokoframework.utils.domain.ErrorEntity;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;
+
+import java.util.List;
 
 public class UniqueTextMandatoryFieldValidator extends AbstractValidator {
 

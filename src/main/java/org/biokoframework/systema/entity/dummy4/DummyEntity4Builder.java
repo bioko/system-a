@@ -27,9 +27,9 @@
 
 package org.biokoframework.systema.entity.dummy4;
 
-import java.util.ArrayList;
-
 import org.biokoframework.utils.domain.EntityBuilder;
+
+import java.util.ArrayList;
 
 public class DummyEntity4Builder extends EntityBuilder<DummyEntity4> {
 

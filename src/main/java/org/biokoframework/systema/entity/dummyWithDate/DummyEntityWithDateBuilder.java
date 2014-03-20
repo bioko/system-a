@@ -27,11 +27,10 @@
 
 package org.biokoframework.systema.entity.dummyWithDate;
 
-import javax.inject.Inject;
-
+import com.google.inject.Injector;
 import org.biokoframework.utils.domain.EntityBuilder;
 
-import com.google.inject.Injector;
+import javax.inject.Inject;
 
 public class DummyEntityWithDateBuilder extends EntityBuilder<DummyEntityWithDate> {
 

@@ -27,8 +27,6 @@
 
 package org.biokoframework.systema.command;
 
-import java.util.Arrays;
-
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
 import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
@@ -38,6 +36,8 @@ import org.biokoframework.system.repository.core.SafeRepositoryHelper;
 import org.biokoframework.systema.entity.dummyMultipart.DummyMultipart;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;
+
+import java.util.Arrays;
 
 
 

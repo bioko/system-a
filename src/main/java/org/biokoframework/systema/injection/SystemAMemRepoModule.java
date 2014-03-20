@@ -27,15 +27,14 @@
 
 package org.biokoframework.systema.injection;
 
-import java.io.File;
-
+import com.google.inject.name.Names;
 import org.apache.commons.io.FileUtils;
 import org.biokoframework.system.ConfigurationEnum;
 import org.biokoframework.system.repository.memory.InMemoryRepository;
 import org.biokoframework.system.repository.sql.SqlRepository;
 import org.biokoframework.system.services.repository.RepositoryModule;
 
-import com.google.inject.name.Names;
+import java.io.File;
 
 /**
  * 

@@ -27,11 +27,10 @@
 
 package org.biokoframework.systema.entity.dummy2;
 
-import javax.inject.Inject;
-
+import com.google.inject.Injector;
 import org.biokoframework.utils.domain.EntityBuilder;
 
-import com.google.inject.Injector;
+import javax.inject.Inject;
 
 public class DummyEntity2Builder extends EntityBuilder<DummyEntity2> {
 

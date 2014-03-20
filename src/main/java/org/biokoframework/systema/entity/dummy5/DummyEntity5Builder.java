@@ -27,10 +27,10 @@
 
 package org.biokoframework.systema.entity.dummy5;
 
-import java.util.ArrayList;
-
 import org.biokoframework.systema.entity.dummy4.DummyEntity4;
 import org.biokoframework.utils.domain.EntityBuilder;
+
+import java.util.ArrayList;
 
 public class DummyEntity5Builder extends EntityBuilder<DummyEntity5> {
 

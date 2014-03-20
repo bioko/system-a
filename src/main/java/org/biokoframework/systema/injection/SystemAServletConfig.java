@@ -33,9 +33,7 @@ import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
 import org.biokoframework.http.BiokoServlet;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
-import java.net.URL;
 
 public class SystemAServletConfig extends GuiceServletContextListener {
 

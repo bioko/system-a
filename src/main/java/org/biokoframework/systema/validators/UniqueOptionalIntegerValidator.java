@@ -27,8 +27,6 @@
 
 package org.biokoframework.systema.validators;
 
-import java.util.List;
-
 import org.biokoframework.system.service.validation.AbstractValidator;
 import org.biokoframework.systema.command.ValidatedCommand;
 import org.biokoframework.systema.commons.SystemARepositories;
@@ -37,6 +35,8 @@ import org.biokoframework.utils.domain.ErrorEntity;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;
 import org.biokoframework.utils.validation.ValidationErrorBuilder;
+
+import java.util.List;
 
 public class UniqueOptionalIntegerValidator extends AbstractValidator {
 

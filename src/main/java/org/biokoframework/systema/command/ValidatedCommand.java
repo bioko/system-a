@@ -27,8 +27,6 @@
 
 package org.biokoframework.systema.command;
 
-import java.util.ArrayList;
-
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
 import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
@@ -38,6 +36,8 @@ import org.biokoframework.systema.entity.dummy2.DummyEntity2;
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.fields.Fields;
 import org.biokoframework.utils.repository.Repository;
+
+import java.util.ArrayList;
 
 public class ValidatedCommand extends AbstractCommand{
 

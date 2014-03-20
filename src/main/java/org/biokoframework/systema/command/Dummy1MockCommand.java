@@ -27,14 +27,14 @@
 
 package org.biokoframework.systema.command;
 
-import java.util.ArrayList;
-
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
 import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
 import org.biokoframework.systema.misc.Dummy1Mock;
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.fields.Fields;
+
+import java.util.ArrayList;
 
 public class Dummy1MockCommand extends AbstractCommand {
 

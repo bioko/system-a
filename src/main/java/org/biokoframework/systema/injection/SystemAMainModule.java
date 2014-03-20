@@ -27,11 +27,11 @@
 
 package org.biokoframework.systema.injection;
 
-import java.util.Map;
-
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Maps;
+import com.google.inject.TypeLiteral;
+import com.google.inject.name.Names;
 import org.biokoframework.http.exception.ExceptionResponseModule;
 import org.biokoframework.http.handler.IHandlerLocator;
 import org.biokoframework.http.handler.annotation.AnnotationHandlerLocator;
@@ -48,10 +48,7 @@ import org.biokoframework.system.services.random.RandomModule;
 import org.biokoframework.systema.factory.SystemACommands;
 import org.biokoframework.utils.validation.ValidationModule;
 
-import com.google.inject.TypeLiteral;
-import com.google.inject.name.Names;
-
-import javax.servlet.ServletContext;
+import java.util.Map;
 
 /**
  * 
