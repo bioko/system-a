@@ -69,19 +69,20 @@ public class RequestEmailConfirmationCommand extends AbstractCommand {
 		Repository<Login> loginRepo = getRepository(Login.class);
 		Repository<EmailConfirmation> confirmationRepo = getRepository(EmailConfirmation.class);
 
-		EmailConfirmation confirmation = new EmailConfirmation();
-		
-		String userEmail = input.get(Login.USER_EMAIL);
-		Login login = loginRepo.retrieveByForeignKey(Login.USER_EMAIL, userEmail);
-		if (login == null) {
-			throw CommandExceptionsFactory.createEntityNotFound(Login.class.getSimpleName(), Login.USER_EMAIL, userEmail);
-		}
-		
-		String token = fRandomTokenService.generateString(EMAIL_CONFIRMATION_TOKEN, 10);
-		
-		confirmation.set(EmailConfirmation.LOGIN_ID, login.getId());
-		confirmation.set(EmailConfirmation.TOKEN, token);
-		confirmation.set(EmailConfirmation.CONFIRMED, false);
+
+        String userEmail = input.get(Login.USER_EMAIL);
+        Login login = loginRepo.retrieveByForeignKey(Login.USER_EMAIL, userEmail);
+        if (login == null) {
+            throw CommandExceptionsFactory.createEntityNotFound(Login.class.getSimpleName(), Login.USER_EMAIL, userEmail);
+        }
+
+        // TODO replace with UUID
+        String token = fRandomTokenService.generateUUID().toString();
+
+        EmailConfirmation confirmation = createEntity(EmailConfirmation.class, new Fields(
+            EmailConfirmation.LOGIN_ID, login.getId(),
+		    EmailConfirmation.TOKEN, token,
+		    EmailConfirmation.CONFIRMED, false));
 		SafeRepositoryHelper.save(confirmationRepo, confirmation);
 		
 		// TODO extract template
