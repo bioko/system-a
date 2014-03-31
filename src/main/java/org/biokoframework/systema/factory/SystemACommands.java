@@ -171,24 +171,22 @@ public class SystemACommands {
 	//                       CRON COMMANDS                                                //
 	////////////////////////////////////////////////////////////////////////////////////////
 
-	@Cron(notifyTo=GenericFieldValues.CRON_EMAIL,  
+	@Cron(impl = CronExampleCommand.class, notifyTo=GenericFieldValues.CRON_EMAIL,
 			expressions={
 				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.DEV),
 				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.PROD),
 				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.DEMO)
 			} 
 		)
-	@Command(impl = CronExampleCommand.class, rest = HttpMethod.NONE)
 	public static final String CRON_EXAMPLE_COMMAND = "cron-example-command";
 
-	@Cron(notifyTo=GenericFieldValues.CRON_EMAIL,  
+	@Cron(impl = CronFailingCommand.class, notifyTo=GenericFieldValues.CRON_EMAIL,
 			expressions={
 				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.DEV),
 				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.PROD),
 				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.DEMO)
 			} 
 		)
-	@Command(impl = CronFailingCommand.class, rest = HttpMethod.NONE)
 	public static final String CRON_FAILING_COMMAND = "cron-failing-command";
 
 	////////////////////////////////////////////////////////////////////////////////////////
