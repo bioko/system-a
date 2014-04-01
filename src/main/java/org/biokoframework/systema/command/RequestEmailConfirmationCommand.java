@@ -76,7 +76,6 @@ public class RequestEmailConfirmationCommand extends AbstractCommand {
             throw CommandExceptionsFactory.createEntityNotFound(Login.class.getSimpleName(), Login.USER_EMAIL, userEmail);
         }
 
-        // TODO replace with UUID
         String token = fRandomTokenService.generateUUID().toString();
 
         EmailConfirmation confirmation = createEntity(EmailConfirmation.class, new Fields(
