@@ -45,6 +45,7 @@ import org.biokoframework.system.services.email.EmailModule;
 import org.biokoframework.system.services.entity.EntityModule;
 import org.biokoframework.system.services.queue.QueueModule;
 import org.biokoframework.system.services.random.RandomModule;
+import org.biokoframework.system.services.templates.TemplatingModule;
 import org.biokoframework.systema.factory.SystemACommands;
 import org.biokoframework.utils.validation.ValidationModule;
 
@@ -95,6 +96,7 @@ public class SystemAMainModule extends HttpSystemMainModule {
         install(new EmailModule(getConfig()));
         install(new QueueModule(getConfig()));
         install(new ValidationModule());
+        install(new TemplatingModule(getConfig()));
 
         install(new ResponseBuilderModule());
         install(new RouteParserModule());
