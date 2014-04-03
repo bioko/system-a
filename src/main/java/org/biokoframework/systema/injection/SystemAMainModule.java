@@ -81,6 +81,7 @@ public class SystemAMainModule extends HttpSystemMainModule {
 	protected void configureProperties() {
 		bindProperty("cronEmailAddress").to("cron@engaged.it");
 		bindProperty("noReplyEmailAddress").to("no-reply@engaged.it");
+        bindProperty("resetPasswordLandingPage").to("http://local.engaged.it/password-reset");
 		bindProperty("tokenValiditySecs").to(900L);
 	}
 
