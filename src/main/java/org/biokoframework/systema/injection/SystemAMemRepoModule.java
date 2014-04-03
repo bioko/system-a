@@ -33,6 +33,7 @@ import org.biokoframework.system.ConfigurationEnum;
 import org.biokoframework.system.repository.memory.InMemoryRepository;
 import org.biokoframework.system.repository.sql.SqlRepository;
 import org.biokoframework.system.services.repository.RepositoryModule;
+import org.biokoframework.systema.entity.population.SystemARepositoryPopulator;
 
 import java.io.File;
 
@@ -57,7 +58,6 @@ public class SystemAMemRepoModule extends RepositoryModule {
 	
 	@Override
 	protected void configureForDemo() {
-		
 		bind(File.class).annotatedWith(Names.named("fileBaseDirectory")).toInstance(FileUtils.getTempDirectory());
 		
 		bindRepositoryTo(SqlRepository.class);
@@ -77,12 +77,9 @@ public class SystemAMemRepoModule extends RepositoryModule {
 //		prepareTemplates(templateRepo);
 //		
 //		
-//	private void prepareTemplates(InMemoryRepository<Template> templateRepo) throws RepositoryException {
-//		try {
-//			templateRepo.save(new TemplateBuilder().loadExample(TemplateBuilder.SYSTEM_A_TEMPLATE).build(false));
-//		} catch (ValidationException exception) {
-//			addError(exception);
-//		}
-//	}
 
+    @Override
+    protected void populateRepository() {
+        populateRepositoryWith(SystemARepositoryPopulator.class);
+    }
 }

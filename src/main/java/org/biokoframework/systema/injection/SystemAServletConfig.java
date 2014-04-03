@@ -29,20 +29,14 @@ package org.biokoframework.systema.injection;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
 import org.biokoframework.http.BiokoServlet;
+import org.biokoframework.http.injection.SystemServletConfig;
 
-import javax.servlet.ServletContextEvent;
-
-public class SystemAServletConfig extends GuiceServletContextListener {
-
-    public void contextInitialized(ServletContextEvent servletContextEvent) {
-		super.contextInitialized(servletContextEvent);
-	}
+public class SystemAServletConfig extends SystemServletConfig {
 
 	@Override
-	protected Injector getInjector() {
+	protected Injector createInjector() {
 		Injector injector = Guice.createInjector(
 				new SystemAMainModule(),
 				new ServletModule() {
@@ -51,8 +45,7 @@ public class SystemAServletConfig extends GuiceServletContextListener {
 						serve("/1.0/*").with(BiokoServlet.class);
 					}
 				});
-		
+
 		return injector;
 	}
-
 }
