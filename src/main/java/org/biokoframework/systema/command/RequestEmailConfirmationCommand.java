@@ -28,23 +28,17 @@
 package org.biokoframework.systema.command;
 
 import com.google.inject.Inject;
-import com.google.inject.name.Named;
 import org.biokoframework.system.KILL_ME.commons.GenericFieldNames;
 import org.biokoframework.system.command.AbstractCommand;
 import org.biokoframework.system.command.CommandException;
-import org.biokoframework.system.entity.authentication.EmailConfirmation;
 import org.biokoframework.system.entity.login.Login;
 import org.biokoframework.system.entity.template.Template;
 import org.biokoframework.system.exceptions.CommandExceptionsFactory;
-import org.biokoframework.system.repository.core.SafeRepositoryHelper;
 import org.biokoframework.system.services.email.EmailException;
 import org.biokoframework.system.services.email.IEmailConfirmationService;
-import org.biokoframework.system.services.email.IEmailService;
-import org.biokoframework.system.services.random.IRandomService;
 import org.biokoframework.system.services.templates.TemplatingException;
 import org.biokoframework.utils.domain.DomainEntity;
 import org.biokoframework.utils.fields.Fields;
-import org.biokoframework.utils.repository.Repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
