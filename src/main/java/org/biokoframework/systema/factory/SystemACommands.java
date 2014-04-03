@@ -260,11 +260,11 @@ public class SystemACommands {
 
 	@Auth(roles={"admin"})
 	@Command(impl=DummyEmptyCommand.class, rest=HttpMethod.POST)
-	public static final String DUMMY_COMMAND_AUTHENTICATED_ONYL_FOR_ADMIN = "dummy-command-authenticated-only-for-admin";
+	public static final String DUMMY_COMMAND_AUTHENTICATED_ONLY_FOR_ADMIN = "dummy-command-authenticated-only-for-admin";
 
 	@Auth(roles={"another"})
 	@Command(impl=DummyEmptyCommand.class, rest=HttpMethod.POST)
-	public static final String DUMMY_COMMAND_AUTHENTICATED_ONYL_FOR_ANOTHER = "dummy-command-authenticated-only-for-another";
+	public static final String DUMMY_COMMAND_AUTHENTICATED_ONLY_FOR_ANOTHER = "dummy-command-authenticated-only-for-another";
 
 	@Auth(roles={"admin","another"})
 	@Command(impl=DummyEmptyCommand.class, rest=HttpMethod.POST)
