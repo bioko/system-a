@@ -64,7 +64,7 @@ public class RequestEmailConfirmationCommand extends AbstractCommand {
         String userEmail = input.get(Login.USER_EMAIL);
         Login login = getRepository(Login.class).retrieveByForeignKey(Login.USER_EMAIL, userEmail);
         if (login == null) {
-            throw CommandExceptionsFactory.createEntityNotFound(Login.class.getSimpleName(), Login.USER_EMAIL, userEmail);
+            throw CommandExceptionsFactory.createEntityNotFound(Login.class, Login.USER_EMAIL, userEmail);
         }
 
         Template template = createEntity(Template.class, new Fields(
