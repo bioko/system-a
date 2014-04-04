@@ -43,6 +43,7 @@ import org.biokoframework.system.services.cron.CronModule;
 import org.biokoframework.system.services.currenttime.CurrentTimeModule;
 import org.biokoframework.system.services.email.EmailModule;
 import org.biokoframework.system.services.entity.EntityModule;
+import org.biokoframework.system.services.passwordreset.PasswordResetModule;
 import org.biokoframework.system.services.queue.QueueModule;
 import org.biokoframework.system.services.random.RandomModule;
 import org.biokoframework.system.services.templates.TemplatingModule;
@@ -98,6 +99,7 @@ public class SystemAMainModule extends HttpSystemMainModule {
         install(new QueueModule(getConfig()));
         install(new ValidationModule());
         install(new TemplatingModule(getConfig()));
+        install(new PasswordResetModule());
 
         install(new ResponseBuilderModule());
         install(new RouteParserModule());
