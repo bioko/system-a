@@ -31,8 +31,6 @@ import org.biokoframework.system.ConfigurationEnum;
 import org.biokoframework.system.KILL_ME.commons.GenericCommandNames;
 import org.biokoframework.system.KILL_ME.commons.GenericFieldValues;
 import org.biokoframework.system.KILL_ME.commons.HttpMethod;
-import org.biokoframework.system.command.KILL_ME.GetCommandInvocationInfoCommand;
-import org.biokoframework.system.command.KILL_ME.GetCommandsListCommand;
 import org.biokoframework.system.command.annotation.Command;
 import org.biokoframework.system.command.annotation.CommandInputs;
 import org.biokoframework.system.command.authentication.ApplyPasswordResetCommand;
@@ -161,11 +159,11 @@ public class SystemACommands {
 	//                       SYSTEM COMMANDS                                              //
 	////////////////////////////////////////////////////////////////////////////////////////
 
-	@Command(impl=GetCommandsListCommand.class, rest=HttpMethod.OPTIONS)
-	public static final String COMMAND_LIST = GenericCommandNames.COMMAND_LIST;
-
-	@Command(impl=GetCommandInvocationInfoCommand.class, rest=HttpMethod.OPTIONS)
-	public static final String COMMAND_INVOCATION_INFO = GenericCommandNames.COMMAND_INVOCATION_INFO;
+//	@Command(impl=GetCommandsListCommand.class, rest=HttpMethod.OPTIONS)
+//	public static final String COMMAND_LIST = GenericCommandNames.COMMAND_LIST;
+//
+//	@Command(impl=GetCommandInvocationInfoCommand.class, rest=HttpMethod.OPTIONS)
+//	public static final String COMMAND_INVOCATION_INFO = GenericCommandNames.COMMAND_INVOCATION_INFO;
 
 	////////////////////////////////////////////////////////////////////////////////////////
 	//                       CRON COMMANDS                                                //

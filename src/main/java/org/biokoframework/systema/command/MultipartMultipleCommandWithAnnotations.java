@@ -33,6 +33,7 @@ import org.biokoframework.system.command.KILL_ME.MultipleCommandPlusPlus;
 import org.biokoframework.system.context.Context;
 import org.biokoframework.systema.factory.SystemACommands;
 
+@Deprecated
 public class MultipartMultipleCommandWithAnnotations extends MultipleCommandPlusPlus {
 
 	@Override

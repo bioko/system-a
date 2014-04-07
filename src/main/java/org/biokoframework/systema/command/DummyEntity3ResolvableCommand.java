@@ -27,12 +27,8 @@
 
 package org.biokoframework.systema.command;
 
-import org.biokoframework.system.command.CommandException;
 import org.biokoframework.system.command.entityDependencies.ResolvableCommand;
-import org.biokoframework.systema.commons.SystemARepositories;
-import org.biokoframework.systema.entity.dummy1.DummyEntity1;
-import org.biokoframework.systema.entity.dummy2.DummyEntity2;
-import org.biokoframework.utils.repository.Repository;
+
 
 public class DummyEntity3ResolvableCommand extends ResolvableCommand {
 
@@ -41,20 +37,20 @@ public class DummyEntity3ResolvableCommand extends ResolvableCommand {
 
 	}
 	
-	@Override
-	public void onContextInitialized()  {
-		try {
-			fBaseCommand = fContext.getCommandHandler().getByName("GET_dummy-entity3");
-		} catch (CommandException e) {			
-			e.printStackTrace();
-		}
-		
-		Repository<DummyEntity1> dummy1Repo = fContext.getRepository(SystemARepositories.DUMMY1);
-		Repository<DummyEntity2> dummy2Repo = fContext.getRepository(SystemARepositories.DUMMY2);
-		
-		with(dummy1Repo, DummyEntity1.class);
-		with(dummy2Repo, DummyEntity2.class);
-	}
+//	@Override
+//	public void onContextInitialized()  {
+//		try {
+//			fBaseCommand = fContext.getCommandHandler().getByName("GET_dummy-entity3");
+//		} catch (CommandException e) {
+//			e.printStackTrace();
+//		}
+//
+//		Repository<DummyEntity1> dummy1Repo = fContext.getRepository(SystemARepositories.DUMMY1);
+//		Repository<DummyEntity2> dummy2Repo = fContext.getRepository(SystemARepositories.DUMMY2);
+//
+//		with(dummy1Repo, DummyEntity1.class);
+//		with(dummy2Repo, DummyEntity2.class);
+//	}
 
 	
 	
