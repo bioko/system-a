@@ -29,7 +29,7 @@ package org.biokoframework.systema.commons;
 
 import org.biokoframework.system.KILL_ME.commons.GenericConstants;
 
-public class SystemAConstants {
+public interface SystemAConstants {
 
 	public static final String FB_MIKOL_ID = "100006698590421";
 	public static final String FB_MIKOL_EMAIL = "mikol_pqswntc_faro@tfbnw.net";
