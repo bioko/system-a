@@ -66,16 +66,14 @@ public class SystemAMainModule extends HttpSystemMainModule {
 		bindProperty("systemVersion").to("1.0");
 		
 		bindProperty("Commands").to(SystemACommands.class);
-		
-		BiMap<String, String> headerToFieldMap = HashBiMap.create();
+        bind(IHandlerLocator.class).to(AnnotationHandlerLocator.class);
+
+        BiMap<String, String> headerToFieldMap = HashBiMap.create();
         headerToFieldMap.put("Engaged-Auth-Token", "authToken");
         headerToFieldMap.put("Engaged-Auth-Token-Expire", "authTokenExpire");
         headerToFieldMap = Maps.unmodifiableBiMap(headerToFieldMap);
-		bind(new TypeLiteral<Map<String, String>>(){}).annotatedWith(Names.named("httpHeaderToFieldsMap")).toInstance(headerToFieldMap);
+        bind(new TypeLiteral<Map<String, String>>(){}).annotatedWith(Names.named("httpHeaderToFieldsMap")).toInstance(headerToFieldMap);
         bind(new TypeLiteral<Map<String, String>>(){}).annotatedWith(Names.named("fieldsHttpHeaderToMap")).toInstance(headerToFieldMap.inverse());
-
-		bind(IHandlerLocator.class).to(AnnotationHandlerLocator.class);
-		
 	}
 
 	@Override
