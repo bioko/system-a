@@ -171,7 +171,7 @@ public class SystemACommands {
 
 	@Cron(impl = CronExampleCommand.class, notifyTo=GenericFieldValues.CRON_EMAIL,
 			expressions={
-				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.DEV),
+				@CronExpression(exp="0/1 * * * * ?", conf=ConfigurationEnum.DEV),
 				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.PROD),
 				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.DEMO)
 			} 
@@ -180,7 +180,7 @@ public class SystemACommands {
 
 	@Cron(impl = CronFailingCommand.class, notifyTo=GenericFieldValues.CRON_EMAIL,
 			expressions={
-				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.DEV),
+				@CronExpression(exp="0/1 * * * * ?", conf=ConfigurationEnum.DEV),
 				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.PROD),
 				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.DEMO)
 			} 
