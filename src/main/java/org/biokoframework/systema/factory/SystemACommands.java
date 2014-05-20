@@ -29,7 +29,6 @@ package org.biokoframework.systema.factory;
 
 import org.biokoframework.system.ConfigurationEnum;
 import org.biokoframework.system.KILL_ME.commons.GenericCommandNames;
-import org.biokoframework.system.KILL_ME.commons.GenericFieldValues;
 import org.biokoframework.system.KILL_ME.commons.HttpMethod;
 import org.biokoframework.system.command.annotation.Command;
 import org.biokoframework.system.command.annotation.CommandInputs;
@@ -169,7 +168,7 @@ public class SystemACommands {
 	//                       CRON COMMANDS                                                //
 	////////////////////////////////////////////////////////////////////////////////////////
 
-	@Cron(impl = CronExampleCommand.class, notifyTo=GenericFieldValues.CRON_EMAIL,
+	@Cron(impl = CronExampleCommand.class, notifyTo="root@example.com",
 			expressions={
 				@CronExpression(exp="0/1 * * * * ?", conf=ConfigurationEnum.DEV),
 				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.PROD),
@@ -178,7 +177,7 @@ public class SystemACommands {
 		)
 	public static final String CRON_EXAMPLE_COMMAND = "cron-example-command";
 
-	@Cron(impl = CronFailingCommand.class, notifyTo=GenericFieldValues.CRON_EMAIL,
+	@Cron(impl = CronFailingCommand.class, notifyTo="root@example.com",
 			expressions={
 				@CronExpression(exp="0/1 * * * * ?", conf=ConfigurationEnum.DEV),
 				@CronExpression(exp="0/10 * * * * ?", conf=ConfigurationEnum.PROD),
