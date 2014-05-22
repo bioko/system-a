@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.biokoframework</groupId>
 	<artifactId>system-a</artifactId>
-	<version>0.1-SNAPSHOT</version>
+	<version>0.1</version>
 	<packaging>war</packaging>
 	<name>Bioko Framework - SystemA</name>
 	<url>http://biokoframework.org</url>
@@ -12,17 +12,17 @@
         <dependency>
             <groupId>org.biokoframework</groupId>
             <artifactId>utils</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>0.1</version>
         </dependency>
         <dependency>
             <groupId>org.biokoframework</groupId>
             <artifactId>system</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>0.1</version>
         </dependency>
     	<dependency>
 			<groupId>org.biokoframework</groupId>
 			<artifactId>http-exposer</artifactId>
-			<version>0.1-SNAPSHOT</version>
+			<version>0.1</version>
 		</dependency>
         <dependency>
             <groupId>joda-time</groupId>
