@@ -25,7 +25,7 @@
  * 
  */
 
-package org.biokoframework.systema.factory;
+package org.biokoframework.systema.injection;
 
 import org.biokoframework.system.ConfigurationEnum;
 import org.biokoframework.system.KILL_ME.commons.GenericCommandNames;
@@ -38,7 +38,7 @@ import org.biokoframework.system.command.authentication.RequestPasswordResetComm
 import org.biokoframework.system.command.authentication.ResponseEmailConfirmationCommand;
 import org.biokoframework.system.command.crud.annotation.CrudCommand;
 import org.biokoframework.system.command.crud.binary.annotation.BlobCrudCommand;
-import org.biokoframework.system.command.description.SystemDescriptionCommand;
+import org.biokoframework.system.command.description.AllOkCommand;
 import org.biokoframework.system.entity.authentication.Authentication;
 import org.biokoframework.system.entity.authentication.EmailConfirmation;
 import org.biokoframework.system.entity.authentication.PasswordReset;
@@ -271,8 +271,10 @@ public class SystemACommands {
  	//                       SYSTEM DESCRIPTION                                              //
  	///////////////////////////////////////////////////////////////////////////////////////////
  	
- 	@Command(impl = SystemDescriptionCommand.class, rest = HttpMethod.OPTIONS)
- 	public static final String DESCRIBE_SYSTEM = "";
+ 	// @Command(impl = SystemDescriptionCommand.class, rest = HttpMethod.OPTIONS)
+ 	// public static final String DESCRIBE_SYSTEM = "";
+    @Command(impl = AllOkCommand.class, rest = HttpMethod.OPTIONS)
+    public static final String CATCH_OPTIONS = "{<.*>commands}";
  		
 	////////////////////////////////////////////////////////////////////////////////////////
 	//                       HIDE-ON TEST                                      			  //

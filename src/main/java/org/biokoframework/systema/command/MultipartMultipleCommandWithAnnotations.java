@@ -31,7 +31,7 @@ import org.biokoframework.system.KILL_ME.commons.GenericCommandNames;
 import org.biokoframework.system.KILL_ME.commons.HttpMethod;
 import org.biokoframework.system.command.KILL_ME.MultipleCommandPlusPlus;
 import org.biokoframework.system.context.Context;
-import org.biokoframework.systema.factory.SystemACommands;
+import org.biokoframework.systema.injection.SystemACommands;
 
 @Deprecated
 public class MultipartMultipleCommandWithAnnotations extends MultipleCommandPlusPlus {
