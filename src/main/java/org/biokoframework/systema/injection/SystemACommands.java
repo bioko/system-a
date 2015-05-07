@@ -122,7 +122,7 @@ public class SystemACommands {
 	////////////////////////////////////////////////////////////////////////////////////////
 
 	@BlobCrudCommand(repoName = SystemARepositories.BLOB)
-	public static final String MY_BLOB = SystemACommandNames.MY_BLOB;
+	public static final String MY_BLOB = "my-blob";
 
 	@Command(impl=MultipartMultipleCommandWithAnnotations.class, rest = HttpMethod.POST)
 	public static final String MULTIPART_MULTIPLE = SystemACommandNames.MULTIPART_MULTIPLE;
