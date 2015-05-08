@@ -94,7 +94,7 @@ public class SystemACommands {
 	})
 	public static final String CONFIRMATION_EMAIL_REQUEST = "confirmation-email";
 	
-	@Command(impl = ResponseEmailConfirmationCommand.class, rest = HttpMethod.PUT)
+	@Command(impl = ResponseEmailConfirmationCommand.class, rest = HttpMethod.POST)
 	@CommandInputs({
 		@Field(name = Login.USER_EMAIL),
 		@Field(name = EmailConfirmation.TOKEN)
